@@ -187,19 +187,19 @@ const skillCategories: {
                       {cat.name}
                     </h4>
                    <div className="flex flex-wrap gap-2">
-  {cat.skills.map((skill) => (
-    <div
-      key={skill}
-      className="text-sm rounded-xl border border-card-border bg-background/60 px-3 py-2 transition-all duration-300 hover:border-accent"
-    >
-      <TechIcon
-        name={skill}
-        showLabel
-        className="h-5 w-5"
-      />
-    </div>
-  ))}
-</div>
+        {cat.skills.map((skill) => (
+          <div
+            key={skill}
+            className="text-sm rounded-xl border border-card-border bg-background/60 px-3 py-2 transition-all duration-300 hover:border-accent"
+            >
+                    <TechIcon
+                      name={skill}
+                      showLabel
+                      className="h-5 w-5"
+                    />
+                  </div>
+                ))}
+              </div>
                   </div>
                 ))}
               </div>

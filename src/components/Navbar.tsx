@@ -27,6 +27,33 @@ useEffect(() => {
   };
 }, []);
 
+useEffect(() => {
+  if (isOpen) {
+    document.body.style.overflow = "hidden";
+    document.body.style.touchAction = "none";
+  } else {
+    document.body.style.overflow = "";
+    document.body.style.touchAction = "";
+  }
+
+  return () => {
+    document.body.style.overflow = "";
+    document.body.style.touchAction = "";
+  };
+}, [isOpen]);
+
+useEffect(() => {
+  const handleResize = () => {
+    if (window.innerWidth >= 768) {
+      setIsOpen(false);
+    }
+  };
+  window.addEventListener("resize", handleResize);
+  return () => {
+    window.removeEventListener("resize", handleResize);
+  };
+}, []);
+
   const navLinks = [
     { name: "About", href: "#about" },
     { name: "Projects", href: "#projects" },
@@ -38,7 +65,7 @@ useEffect(() => {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "py-3 glass-panel shadow-lg shadow-accent-glow/5"
+          ? "py-3 glass-panel shadow-lg shadow-accent-glow/10"
           : "py-5 bg-transparent"
       }`}
     >
@@ -65,7 +92,7 @@ useEffect(() => {
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-8"
+        <nav className="hidden md:flex items-center gap-8 h-50vh w-100vh"
               id="mobile-menu">
           <ul className="flex items-center gap-6 text-sm font-medium text-secondary">
             {navLinks.map((link) => (
@@ -125,7 +152,7 @@ useEffect(() => {
 
       {/* Mobile Drawer Overlay */}
       <div
-        className={`fixed inset-0 top-[60px] z-40 bg-background/95 backdrop-blur-md md:hidden transition-all duration-300 border-t border-card-border ${
+        className={`fixed inset-0 top-16 z-40 bg-background/98 backdrop-blur-md md:hidden transition-all duration-300 border-t border-card-border ${
           isOpen
             ? "visible opacity-100 translate-y-0"
             : "invisible opacity-0 -translate-y-4 pointer-events-none"
