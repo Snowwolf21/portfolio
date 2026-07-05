@@ -7,35 +7,29 @@ export async function POST(req: Request) {
   try {
     const { name, email, message } = await req.json();
 
-    await resend.emails.send({
-      from: `${name} <onboarding@resend.dev>`,
+    const data = await resend.emails.send({
+      from: "Portfolio <onboarding@resend.dev>",
       to: "snowwolf0231@gmail.com",
-      subject: `New Portfolio Message`,
-
+      subject: "New Portfolio Message",
       html: `
         <h2>New Portfolio Message</h2>
 
         <p><strong>Name:</strong> ${name}</p>
-
         <p><strong>Email:</strong> ${email}</p>
-
         <p><strong>Message:</strong></p>
-
         <p>${message}</p>
       `,
     });
 
-    return NextResponse.json({
-      success: true,
-    });
+    console.log("Resend response:", data);
+
+    return NextResponse.json(data);
   } catch (error) {
+    console.error("Resend error:", error);
+
     return NextResponse.json(
-      {
-        success: false,
-      },
-      {
-        status: 500,
-      }
+      { error: String(error) },
+      { status: 500 }
     );
   }
 }
