@@ -12,7 +12,7 @@ export default function Contact() {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    if (!name || !email || !message) return;
+    if (!name.trim() || !email.trim() || !message.trim()) return;
 
     setStatus("submitting");
 
@@ -72,7 +72,7 @@ export default function Contact() {
 
   return (
     <section id="contact" className="py-20 relative overflow-hidden bg-background">
-      <div className="max-w-6xl mx-auto px-4 md:px-8 relative z-10 flex flex-col min-h-[60vh] justify-between">
+      <div className="max-w-6xl mx-auto px-4 md:px-8 relative z-10 flex flex-col min-h-60 justify-between">
         
         {/* Main Section */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-16">
@@ -150,7 +150,8 @@ export default function Contact() {
                       <input
                         type="text"
                         id="name"
-                        required
+                        aria-label="Name"
+                        aria-required
                         value={name}
                         disabled={status === "submitting"}
                         onChange={(e) => setName(e.target.value)}
@@ -167,7 +168,8 @@ export default function Contact() {
                       <input
                         type="email"
                         id="email"
-                        required
+                        aria-label="Email"
+                        aria-required
                         value={email}
                         disabled={status === "submitting"}
                         onChange={(e) => setEmail(e.target.value)}
@@ -185,7 +187,8 @@ export default function Contact() {
                     </label>
                     <textarea
                       id="message"
-                      required
+                      aria-label="Message"
+                      aria-required
                       rows={5}
                       value={message}
                       disabled={status === "submitting"}
@@ -198,6 +201,8 @@ export default function Contact() {
                   {/* Submit Button */}
                   <button
                     type="submit"
+                    aria-label="Submit message"
+                    aria-disabled={status === "submitting"}
                     disabled={status === "submitting"}
                     className="w-full py-4 rounded-xl bg-accent hover:bg-accent-hover text-white font-semibold text-sm transition-all duration-300 hover:shadow-lg hover:shadow-accent/20 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 cursor-pointer"
                   >
@@ -221,8 +226,8 @@ export default function Contact() {
         </div>
   
         {/* Footer */}
-        <div className="border-t border-card-border/80 pt-8 mt-12 flex flex-col sm:flex-row items-center justify-between text-sm text-secondary gap-4">
-            <p>© {new Date().getFullYear()} Alex. All rights reserved.</p>
+        <div className="border-t border-card-border/80 pt-8 mt-12 flex flex-col sm:flex-row items-center justify-between text-md text-secondary gap-4">
+          <p>© {new Date().getFullYear()} Snowwolf. All rights reserved.</p>
           <div className="flex flex-wrap items-center gap-3">
   <span>Built with</span>
 
@@ -231,6 +236,7 @@ export default function Contact() {
       key={tech.name}
       href={tech.href}
       target="_blank"
+      aria-label={tech.name}
       rel="noopener noreferrer"
       className="hover:scale-105 transition-transform"
     >

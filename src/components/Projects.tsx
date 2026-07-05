@@ -25,9 +25,9 @@ export default function Projects() {
       liveUrl: null,   // TODO: Replace with real live URL
       emoji: "📋",
       highlights: [
-        "Designed the MongoDB schema for multi-board workspaces with per-user permissions — had to restructure twice when nested arrays hit update performance walls",
+        "Designed the MongoDB schema for multi-board workspaces with per-user permissions had to restructure twice when nested arrays hit update performance walls",
         "Implemented optimistic UI updates for drag-and-drop, then reconciled with Socket.io server state to handle race conditions between concurrent users",
-        "Built JWT auth from scratch with HTTP-only cookies instead of using a library — to actually understand how session security works under the hood"
+        "Built JWT auth from scratch with HTTP-only cookies instead of using a library to actually understand how session security works under the hood"
       ]
     },
     {
@@ -39,9 +39,9 @@ export default function Projects() {
       liveUrl: null,   // TODO: Replace with real live URL
       emoji: "⚡",
       highlights: [
-        "Added client-side caching with stale-while-revalidate pattern to prevent redundant API calls on tab switches — reduced network requests noticeably during daily use",
+        "Added client-side caching with stale-while-revalidate pattern to prevent redundant API calls on tab switches reduced network requests noticeably during daily use",
         "Built a responsive grid layout that adapts between 1, 2, and 3 columns using CSS container queries instead of media queries, so the cards respond to their container, not the viewport",
-        "Implemented a bookmarks system persisted to localStorage with an undo-delete pattern — small feature but it taught me a lot about optimistic state management"
+        "Implemented a bookmarks system persisted to localStorage with an undo-delete pattern small feature but it taught me a lot about optimistic state management"
       ]
     },
     {
@@ -53,8 +53,8 @@ export default function Projects() {
       liveUrl: null,   // TODO: Replace with real live URL
       emoji: "📊",
       highlights: [
-        "Wired up Recharts with Context API so that clicking a chart segment filters the inventory table below it — learned the hard way that you need to debounce rapid filter state changes",
-        "Implemented keyboard navigation across all interactive elements and tested with VoiceOver — discovered that most custom dropdown libraries silently break screen reader announcements",
+        "Wired up Recharts with Context API so that clicking a chart segment filters the inventory table below it learned the hard way that you need to debounce rapid filter state changes",
+        "Implemented keyboard navigation across all interactive elements and tested with VoiceOver discovered that most custom dropdown libraries silently break screen reader announcements",
         "Designed a nested filter system for inventory categories with URL-synced query params, so users can share filtered views by just copying the URL"
       ]
     }
