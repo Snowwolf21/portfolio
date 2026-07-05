@@ -3,27 +3,55 @@
 import Link from "next/link";
 import TechIcon from "./Tech-Icon";
 import { useState, FormEvent } from "react";
-
+ 
+type Status =
+  | "idle"
+  | "submitting"
+  | "success"
+  | "error";
 export default function Contact() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [status, setStatus] = useState<Status>("idle");
 
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-    if (!name.trim() || !email.trim() || !message.trim()) return;
+const handleSubmit = async (e: FormEvent) => {
+  e.preventDefault();
 
+  if (!name.trim() || !email.trim() || !message.trim()) {
+    return;
+  }
+
+  try {
     setStatus("submitting");
 
-    // Simulate server side submission
-    setTimeout(() => {
-      setStatus("success");
-      setName("");
-      setEmail("");
-      setMessage("");
-    }, 1500);
-  };
+    const response = await fetch("/api/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name,
+        email,
+        message,
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to send message.");
+    }
+
+    setStatus("success");
+
+    setName("");
+    setEmail("");
+    setMessage("");
+  } catch (error) {
+    console.error(error);
+
+    setStatus("error");
+  }
+};
 
   const socials = [
     {
