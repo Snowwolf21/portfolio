@@ -21,6 +21,13 @@ export async function POST(req: Request) {
       `,
     });
 
+    if (data.error) {
+  return NextResponse.json(
+    { error: data.error.message },
+    { status: 400 }
+  );
+}
+
     console.log("Resend response:", data);
 
     return NextResponse.json(data);
