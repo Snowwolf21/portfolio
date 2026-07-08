@@ -1,13 +1,32 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
 
 @variant dark (&:where(.dark, .dark *));
 
-/* @layer utilities {
-  .perspective-1000 { perspective: 1000px; }
-  .backface-hidden { backface-visibility: hidden; -webkit-backface-visibility: hidden; }
-  .rotate-y-180 { transform: rotateY(180deg); }
-  .transform-style-3d { transform-style: preserve-3d; }
-} */
+@keyframes float {
+
+0%{
+transform:translateY(0px);
+}
+
+50%{
+transform:translateY(-12px);
+}
+
+100%{
+transform:translateY(0px);
+}
+
+}
+
+.animate-float{
+
+animation:float 5s ease-in-out infinite;
+
+}
 
 .perspective-1000 {
   perspective: 1000px;
@@ -27,21 +46,79 @@
 }
 
 :root {
-  --background: #f8fafc;
-  --foreground: #0f172a;
-  --secondary: #475569;
-  --accent: #4f46e5;
+  --secondary:oklch(0.97 0 0);
+  --accent:oklch(0.97 0 0);
   --accent-hover: #4338ca;
   --accent-glow: rgba(79, 70, 229, 0.15);
-  
+
   --card-bg: rgba(255, 255, 255, 0.7);
   --card-border: rgba(15, 23, 42, 0.08);
   --nav-bg: rgba(248, 250, 252, 0.8);
-  
+
   --scrollbar-thumb: #cbd5e1;
   --scrollbar-track: #f1f5f9;
 
   color-scheme: light dark;
+
+  --background:oklch(1 0 0);
+
+  --foreground:oklch(0.145 0 0);
+
+  --card:oklch(1 0 0);
+
+  --card-foreground:oklch(0.145 0 0);
+
+  --popover:oklch(1 0 0);
+
+  --popover-foreground:oklch(0.145 0 0);
+
+  --primary:oklch(0.205 0 0);
+
+  --primary-foreground:oklch(0.985 0 0);
+
+  --secondary-foreground:oklch(0.205 0 0);
+
+  --muted:oklch(0.97 0 0);
+
+  --muted-foreground:oklch(0.556 0 0);
+
+  --accent-foreground:oklch(0.205 0 0);
+
+  --destructive:oklch(0.577 0.245 27.325);
+
+  --border:oklch(0.922 0 0);
+
+  --input:oklch(0.922 0 0);
+
+  --ring:oklch(0.708 0 0);
+
+  --chart-1:oklch(0.87 0 0);
+
+  --chart-2:oklch(0.556 0 0);
+
+  --chart-3:oklch(0.439 0 0);
+
+  --chart-4:oklch(0.371 0 0);
+
+  --chart-5:oklch(0.269 0 0);
+
+  --radius:0.625rem;
+
+  --sidebar:oklch(0.985 0 0);
+
+  --sidebar-foreground:oklch(0.145 0 0);
+
+  --sidebar-primary:oklch(0.205 0 0);
+
+  --sidebar-primary-foreground:oklch(0.985 0 0);
+
+  --sidebar-accent:oklch(0.97 0 0);
+
+  --sidebar-accent-foreground:oklch(0.205 0 0);
+
+  --sidebar-border:oklch(0.922 0 0);
+
+  --sidebar-ring:oklch(0.708 0 0);
 }
 
 :root.dark {
@@ -51,11 +128,11 @@
   --accent: #818cf8;
   --accent-hover: #6366f1;
   --accent-glow: rgba(129, 140, 248, 0.2);
-  
+
   --card-bg: rgba(13, 20, 35, 0.6);
   --card-border: rgba(255, 255, 255, 0.08);
   --nav-bg: rgba(8, 12, 20, 0.8);
-  
+
   --scrollbar-thumb: #475569;
   --scrollbar-track: #0f172a;
 }
@@ -69,9 +146,44 @@
   --color-card-bg: var(--card-bg);
   --color-card-border: var(--card-border);
   --color-nav-bg: var(--nav-bg);
-  
+
   --font-sans: var(--font-sans), system-ui, sans-serif;
-  --font-mono: var(--font-mono), monospace;
+  --font-mono:var(--font-mono);
+  --font-heading:var(--font-mono);
+  --color-sidebar-ring:var(--sidebar-ring);
+  --color-sidebar-border:var(--sidebar-border);
+  --color-sidebar-accent-foreground:var(--sidebar-accent-foreground);
+  --color-sidebar-accent:var(--sidebar-accent);
+  --color-sidebar-primary-foreground:var(--sidebar-primary-foreground);
+  --color-sidebar-primary:var(--sidebar-primary);
+  --color-sidebar-foreground:var(--sidebar-foreground);
+  --color-sidebar:var(--sidebar);
+  --color-chart-5:var(--chart-5);
+  --color-chart-4:var(--chart-4);
+  --color-chart-3:var(--chart-3);
+  --color-chart-2:var(--chart-2);
+  --color-chart-1:var(--chart-1);
+  --color-ring:var(--ring);
+  --color-input:var(--input);
+  --color-border:var(--border);
+  --color-destructive:var(--destructive);
+  --color-accent-foreground:var(--accent-foreground);
+  --color-muted-foreground:var(--muted-foreground);
+  --color-muted:var(--muted);
+  --color-secondary-foreground:var(--secondary-foreground);
+  --color-primary-foreground:var(--primary-foreground);
+  --color-primary:var(--primary);
+  --color-popover-foreground:var(--popover-foreground);
+  --color-popover:var(--popover);
+  --color-card-foreground:var(--card-foreground);
+  --color-card:var(--card);
+  --radius-sm:calc(var(--radius) * 0.6);
+  --radius-md:calc(var(--radius) * 0.8);
+  --radius-lg:var(--radius);
+  --radius-xl:calc(var(--radius) * 1.4);
+  --radius-2xl:calc(var(--radius) * 1.8);
+  --radius-3xl:calc(var(--radius) * 2.2);
+  --radius-4xl:calc(var(--radius) * 2.6);
 }
 
 html, body {
@@ -127,8 +239,6 @@ html, body {
   box-shadow: 0 12px 30px -10px var(--accent-glow);
 }
 
-
-
 /* Custom Scroll Reveal Animations */
 @keyframes fade-in-up {
   from {
@@ -162,7 +272,7 @@ html, body {
     transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
                 transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   }
-  
+
   .scroll-reveal.in-view {
     opacity: 1;
     transform: translateY(0) scale(1);
@@ -179,4 +289,61 @@ html, body {
   filter: blur(40px);
   z-index: -10;
   pointer-events: none;
+}
+
+.dark {
+  --background: #080c14;
+  --foreground: #f8fafc;
+  --card: #0d1423;
+  --card-foreground: #f8fafc;
+  --popover: #0d1423;
+  --popover-foreground: #f8fafc;
+  --primary: #818cf8;
+  --primary-foreground: #080c14;
+  --secondary: #94a3b8;
+  --secondary-foreground: #f8fafc;
+  --muted: #1e293b;
+  --muted-foreground: #94a3b8;
+  --accent: #818cf8;
+  --accent-foreground: #f8fafc;
+  --accent-hover: #6366f1;
+  --accent-glow: rgba(129, 140, 248, 0.2);
+  --card-bg: rgba(13, 20, 35, 0.6);
+  --card-border: rgba(255, 255, 255, 0.08);
+  --nav-bg: rgba(8, 12, 20, 0.8);
+  --scrollbar-thumb: #475569;
+  --scrollbar-track: #0f172a;
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: rgba(255, 255, 255, 0.08);
+  --input: rgba(255, 255, 255, 0.1);
+  --ring: #818cf8;
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --sidebar: #0d1423;
+  --sidebar-foreground: #f8fafc;
+  --sidebar-primary: #818cf8;
+  --sidebar-primary-foreground: #080c14;
+  --sidebar-accent: rgba(255, 255, 255, 0.05);
+  --sidebar-accent-foreground: #f8fafc;
+  --sidebar-border: rgba(255, 255, 255, 0.08);
+  --sidebar-ring: #818cf8;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+
+}
+  body {
+    @apply bg-background text-foreground;
+
+}
+  html {
+    @apply font-mono;
+
+}
+
 }

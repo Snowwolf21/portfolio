@@ -8,8 +8,10 @@ const geistSans = GeistSans
 const geistMono = GeistMono
 
 import "./globals.css";
-import ThemeScript from "@/components/ThemeScript";
+import { JetBrains_Mono } from "next/font/google";
+import { cn } from "@/lib/utils";
 
+const jetbrainsMono = JetBrains_Mono({subsets:['latin'],variable:'--font-mono'});
 
 export const viewport: Viewport = {
   themeColor: [
@@ -19,7 +21,7 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://snowwolf.dev"),
+  metadataBase: new URL("https://snowwolfportfolio.vercel.app"),
 
   title: {
     default: "Snowwolf – Frontend & Full Stack Developer",
@@ -50,7 +52,7 @@ export const metadata: Metadata = {
     title: "Snowwolf | Frontend Developer",
     description:
       "Portfolio showcasing React, Next.js, TypeScript, and full-stack development.",
-    url: "https://snowwolf.dev",
+    url: "https://snowwolfportfolio.vercel.app",
     siteName: "Snowwolf",
     images: [
       {
@@ -71,7 +73,7 @@ export const metadata: Metadata = {
       images: ["/og-image.png"],
     },
   alternates: {
-  canonical: "https://snowwolf.dev",
+  canonical: "https://snowwolfportfolio.vercel.app",
 },
 
 robots: {
@@ -116,7 +118,7 @@ keywords: [
 authors: [
   {
     name: "Akinkunmi Adeyinka",
-    url: "https://snowwolf.dev",
+    url: "https://snowwolfportfolio.vercel.app",
   },
 ],
 creator: "Akinkunmi Adeyinka",
@@ -132,12 +134,28 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning >
+    <html lang="en" suppressHydrationWarning className={cn("font-mono", jetbrainsMono.variable)} >
       
       <head>
         
         <meta name="color-scheme" content="light dark" />
-        <ThemeScript />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  const stored = localStorage.getItem('theme');
+                  if (stored === 'dark' || (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                    document.documentElement.classList.add('dark');
+                  } else {
+                    document.documentElement.classList.remove('dark');
+                  }
+                } catch (e) {}
+              })()
+            `,
+          }}
+        />
+      
       </head>
      <body 
      className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-background text-foreground transition-colors duration-300`}>
