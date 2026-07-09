@@ -15,7 +15,7 @@ export default function About() {
                 title={about.title}
                 subtitle={about.subtitle}
               />
-        <div className="grid items-center gap-20 lg:grid-cols-2">
+        <div className="grid items-center mt-4 md:mt-10 lg:grid-cols-2">
           <Reveal>
             <AboutInfo />
           </Reveal>

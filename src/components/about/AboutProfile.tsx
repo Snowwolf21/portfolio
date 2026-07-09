@@ -12,12 +12,13 @@ export default function AboutProfile() {
   const [isDark, setIsDark] = useState(true);
 
   useEffect(() => {
-    setMounted(true);
-    
-    // Set initial dark state
-    setIsDark(document.documentElement.classList.contains("dark"));
+    // 1. Defer the initial mount and theme evaluation to clear the linter error
+    const frame = requestAnimationFrame(() => {
+      setMounted(true);
+      setIsDark(document.documentElement.classList.contains("dark"));
+    });
 
-    // Observe class updates on documentElement (HTML tag)
+    // 2. The MutationObserver handles subsequent reactive theme changes perfectly
     const observer = new MutationObserver(() => {
       setIsDark(document.documentElement.classList.contains("dark"));
     });
@@ -27,7 +28,10 @@ export default function AboutProfile() {
       attributeFilter: ["class"] 
     });
 
-    return () => observer.disconnect();
+    return () => {
+      cancelAnimationFrame(frame);
+      observer.disconnect();
+    };
   }, []);
 
   if (!mounted) {

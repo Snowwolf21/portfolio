@@ -131,6 +131,7 @@ export default function ContactForm() {
             id="name"
             type="text"
             name="name"
+            aria-label="name"
             value={formData.name}
             onChange={handleChange}
             onBlur={handleBlur}
@@ -147,6 +148,7 @@ export default function ContactForm() {
           </label>
           <input
             id="email"
+            aria-label="email"
             type="email"
             name="email"
             value={formData.email}
@@ -168,6 +170,7 @@ export default function ContactForm() {
           id="subject"
           type="text"
           name="subject"
+          aria-label="subject"
           value={formData.subject}
           onChange={handleChange}
           placeholder="Collaboration Inquiry"
@@ -183,6 +186,7 @@ export default function ContactForm() {
         <textarea
           id="message"
           name="message"
+          aria-label="message"
           rows={5}
           value={formData.message}
           onChange={handleChange}
@@ -195,8 +199,9 @@ export default function ContactForm() {
 
       <button
         type="submit"
+        aria-label="submit button"
         disabled={status === "sending"}
-        className="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-accent to-indigo-600 hover:from-accent-hover hover:to-indigo-700 text-white font-bold rounded-xl transition-all duration-300 shadow-md shadow-accent-glow hover:shadow-lg hover:shadow-accent-glow/50 flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-[0.98] cursor-pointer disabled:opacity-50 disabled:pointer-events-none"
+        className="w-full sm:w-auto px-8 py-3.5 bg-linear-to-r from-accent to-indigo-600 hover:from-accent-hover hover:to-indigo-700 text-white font-bold rounded-xl transition-all duration-300 shadow-md shadow-accent-glow hover:shadow-lg hover:shadow-accent-glow/50 flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-[0.98] cursor-pointer disabled:opacity-50 disabled:pointer-events-none"
       >
         <span>{status === "sending" ? "Sending..." : "Send Message"}</span>
         <Send className="w-4 h-4" />

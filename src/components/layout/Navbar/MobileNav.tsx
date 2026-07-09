@@ -3,8 +3,6 @@
 import { useState } from "react";
 import Logo from "./Logo";
 import { Menu, X } from "lucide-react";
-import { navigation } from "@/data/navigation";
-import Link from "next/link";
 import { ThemeToggle } from "./ThemeToggle";
 import NavLinks from "./NavLinks";
 import NavButton from "./NavButton";
