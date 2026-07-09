@@ -15,7 +15,7 @@ export default function Footer() {
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
           {/* Copyright Info */}
           <p className="text-sm font-semibold tracking-wide text-center sm:text-left">
-            © {new Date().getFullYear()} Snowwolf. All rights reserved.
+           Copyright © {new Date().getFullYear()} Snowwolf. All rights reserved.
           </p>
 
           {/* Scroll to Top Arrow Button */}
