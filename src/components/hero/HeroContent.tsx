@@ -4,7 +4,7 @@ import HeroSocials from "./HeroSocials";
 
 export default function HeroContent() {
   return (
-    <div className="space-y-8 text-left">
+    <div className="space-y-8 text-center md:text-left">
       {/* Pill Badge */}
       <span className="inline-flex rounded-full border border-accent/30 bg-accent/10 px-4.5 py-1.5 text-xs font-bold uppercase tracking-widest text-foreground/60">
         Hello there,👋🏽
