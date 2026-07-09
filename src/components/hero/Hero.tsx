@@ -6,7 +6,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative w-screen min-h-screen flex items-center overflow-hidden text-foreground"
+      className="relative flex items-center overflow-hidden text-foreground"
     >
       <Container>
         <div className="grid items-center gap-8 lg:grid-cols-2 mt-32 ">
