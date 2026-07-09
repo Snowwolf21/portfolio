@@ -15,7 +15,7 @@ export async function POST(request: NextRequest) {
 
   try {
     const { name, email, message } = await request.json();
-ß
+
     // 💡 Added strict validation to prevent empty payloads
     if (!name.trim() || !email.trim() || !message.trim()) {
       return new Response(

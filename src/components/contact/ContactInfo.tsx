@@ -56,7 +56,7 @@ export default function ContactInfo() {
                 <p className="text-xs font-bold text-muted-foreground uppercase tracking-wider">
                   {item.label}
                 </p>
-                <p className="text-sm font-semibold text-foreground group-hover:text-accent transition-colors">
+                <p className="text-sm font-semibold text-foreground group-hover:text-accent-hover transition-colors">
                   {item.value}
                 </p>
               </div>

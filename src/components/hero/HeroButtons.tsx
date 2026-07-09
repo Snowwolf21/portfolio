@@ -4,7 +4,7 @@ import { ArrowUpRight } from "lucide-react";
 
 export default function HeroButtons() {
   return (
-    <div className="flex justify-center md:justify-start flex-wrap gap-4 pt-2">
+    <div className="flex justify-center lg:justify-start flex-wrap gap-8 pt-2">
       {/* View My Work Button */}
       <Link
         href="#projects"
@@ -17,7 +17,8 @@ export default function HeroButtons() {
       {/* Contact Me Button */}
       <Link
         href="#contact"
-        className="inline-flex items-center gap-2 px-6 py-3.5 border border-accent-hover/20 hover:border-accent-glow/30 dark:border-foreground/15 bg-foreground/10 dark:bg-zinc-900/30 hover:bg-foreground/20 dark:hover:bg-zinc-900/60 text-foreground font-bold rounded-xl transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer text-sm"
+        className="inline-flex items-center gap-2 px-6 py-3.5 border border-accent-hover/20 hover:border-accent-glow/30 dark:border-foreground/15 bg-foreground/10 dark:bg-zinc-accent/20 hover:bg-foreground/20 
+        dark:hover:bg-zinc-accent/40 text-foreground font-bold rounded-xl transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer text-sm"
       >
         <span>Contact Me</span>
       </Link>
