@@ -158,7 +158,7 @@ export default function RootLayout({
       
       </head>
      <body 
-     className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-background text-foreground transition-colors duration-300`}>
+     className={`${geistSans.variable} ${geistMono.variable} w-screen min-h-screen bg-background text-foreground transition-colors duration-300`}>
         {children}
       </body>
     </html>
