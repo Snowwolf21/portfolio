@@ -6,7 +6,7 @@ export default function HeroImage() {
   return (
     <div className="relative flex justify-center items-center">
       {/* Main Avatar Container */}
-      <div className="relative h-[480px] w-[330px] sm:h-[500px] sm:w-[400px] group">
+      <div className="relative h-[480px] w-[320px] sm:h-[500px] sm:w-[400px] group">
         {/* Neon Glow behind the card */}
         <div className="absolute inset-0 rounded-[3rem] bg-linear-to-br from-accent to-purple-500 blur-3xl opacity-30 group-hover:opacity-40 transition-opacity duration-500" />
         
