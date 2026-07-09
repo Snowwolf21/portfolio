@@ -6,12 +6,12 @@ export default function HeroImage() {
   return (
     <div className="relative flex justify-center items-center">
       {/* Main Avatar Container */}
-      <div className="relative h-100 w-96 md:h-110 md:w-110 group">
+      <div className="relative h-100 w-90 md:h-110 md:w-100 group">
         {/* Neon Glow behind the card */}
         <div className="absolute inset-0 rounded-4xl bg-linear-to-br from-accent to-purple-500 blur-3xl opacity-30 group-hover:opacity-40 transition-opacity duration-500" />
         
         {/* Glow border ring frame */}
-        <div className="absolute inset-0 rounded-4xl bg-linear-to-br from-accent to-purple-500 p-[1.5px] shadow-2xl">
+        <div className="absolute inset-0 left-0 rounded-4xl bg-linear-to-br from-accent to-purple-500 p-[1.5px] shadow-2xl">
           <div className="relative h-full w-full rounded-4xl overflow-hidden bg-background">
             <Image
               src={Kunmi}
