@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function AboutInfo() {
   return (
-    <div className="space-y-8 text-left p-4 border-f/15 rounded-xl">
+    <div className="space-y-8 text-left p-4 border-accent-hover rounded-xl ">
       <div className="space-y-4">
         <p className="text-base sm:text-lg leading-relaxed text-muted-foreground whitespace-pre-line">
           {about.description.trim()}

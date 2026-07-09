@@ -4,7 +4,7 @@ import { ArrowUpRight } from "lucide-react";
 
 export default function HeroButtons() {
   return (
-    <div className="flex justify-center lg:justify-start flex-wrap gap-8 pt-2">
+    <div className="flex justify-center lg:justify-start flex-wrap gap-4 pt-2">
       {/* View My Work Button */}
       <Link
         href="#projects"

@@ -6,7 +6,7 @@ export default function HeroImage() {
   return (
     <div className="relative flex justify-center items-center">
       {/* Main Avatar Container */}
-      <div className="relative h-[480px] w-[380px] sm:h-[500px] sm:w-[400px] group">
+      <div className="relative h-[480px] w-[330px] sm:h-[500px] sm:w-[400px] group">
         {/* Neon Glow behind the card */}
         <div className="absolute inset-0 rounded-[3rem] bg-linear-to-br from-accent to-purple-500 blur-3xl opacity-30 group-hover:opacity-40 transition-opacity duration-500" />
         
@@ -24,7 +24,7 @@ export default function HeroImage() {
         </div>
 
         {/* Floating Card 1: 2+ Years Experience (Bottom-Left) */}
-        <div className="absolute -left-10 bottom-12 z-20 animate-float">
+        <div className="absolute -left-6 md:-left-10 bottom-12 z-20 animate-float">
           <div className="bg-zinc-950/85 dark:bg-zinc-950/85 backdrop-blur-md rounded-2xl border border-white/10 p-4 shadow-xl flex flex-col justify-center items-start text-left w-[125px]">
             <span className="text-3xl font-black text-transparent bg-clip-text bg-linear-to-r from-accent to-indigo-400">
               2+
