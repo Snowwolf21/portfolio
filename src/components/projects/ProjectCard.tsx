@@ -13,7 +13,25 @@ export default function ProjectCard({
   project,
 }: Props) {
   return (
-    <Card className="group overflow-hidden">
+    <Card className="
+        group
+        relative
+        overflow-hidden
+        rounded-3xl
+        border
+        border-white/10
+        bg-card
+        transition-all
+        duration-500
+        hover:-translate-y-2
+        hover:transform-[perspective(1200px)_rotateX(4deg)_rotateY(-4deg)]
+       before:absolute
+       before:inset-0
+       before:bg-accent/10
+       before:opacity-0
+       group-hover:before:opacity-100
+       before:transition-opacity
+    ">
       <ProjectImage
         src={project.image}
         title={project.title}

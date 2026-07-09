@@ -66,7 +66,17 @@ interface Props {
 
 export default function TechBadges({ tech }: Props) {
   return (
-    <div className="flex flex-wrap gap-2 mt-4">
+    <div className="
+      flex
+      flex-wrap
+      gap-2
+      scale-75
+      opacity-0
+      group-hover:scale-100
+      group-hover:opacity-100
+      transition-all
+      duration-500">
+
       {tech.map((item) => {
         const match = techIconMap[item];
         const Icon = match?.icon;

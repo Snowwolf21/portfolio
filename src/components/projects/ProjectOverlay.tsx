@@ -9,7 +9,18 @@ interface Props {
 
 export default function ProjectOverlay({ github, live }: Props) {
   return (
-    <div className="mt-6 flex gap-4  justify-between">
+    <div
+      className="
+        flex 
+        gap-4
+        mt-6
+        opacity-0
+        translate-y-6
+        group-hover:opacity-100
+        group-hover:translate-y-0
+        transition-all
+        duration-500
+        delay-500">
       <Link
         href={github}
         target="_blank"

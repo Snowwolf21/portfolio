@@ -12,7 +12,7 @@ export default function HeroContent() {
 
       <div className="space-y-4 text-center md:text-left">
         {/* Main Header */}
-        <h1 className="text-4xl font-black leading-none md:text-7xl tracking-tight text-foreground/60 ">
+        <h1 className="text-5xl font-black leading-none md:text-7xl tracking-tight text-foreground/60 ">
           I&apos;m{" "}
           <span className="text-foreground/60">
             Akinkunmi
@@ -24,13 +24,13 @@ export default function HeroContent() {
         </h1>
 
         {/* Sub Header */}
-        <h2 className="text-2xl font-bold md:text-4xl text-foreground/60 tracking-wide">
+        <h2 className="text-3xl font-bold md:text-4xl text-foreground/60 tracking-wide">
           Frontend Developer
         </h2>
       </div>
 
       {/* Description */}
-      <p className="max-w-xl text-base md:text-lg text-muted-foreground leading-relaxed">
+      <p className="max-w-xl text-lg text-muted-foreground leading-relaxed">
         I build modern, responsive, and scalable web applications with the React/Next.js and Node.js ecosystem, bringing creative and functional ideas to life on the web.
       </p>
 
