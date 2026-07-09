@@ -62,12 +62,13 @@ export default function ContactForm() {
   const [errors, setErrors] = useState<FormErrors>({});
   const [touched, setTouched] = useState<Partial<Record<keyof FormData, boolean>>>({});
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  // State to show server error messages to the user if something fails
+  const [serverError, setServerError] = useState<string | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     const key = name as keyof FormData;
     setFormData((prev) => ({ ...prev, [key]: value }));
-    // Clear the error for this field as the user types
     if (errors[key]) {
       setErrors((prev) => ({ ...prev, [key]: undefined }));
     }
@@ -76,29 +77,49 @@ export default function ContactForm() {
   const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const key = e.target.name as keyof FormData;
     setTouched((prev) => ({ ...prev, [key]: true }));
-    // Validate just this field on blur
     const fieldErrors = validate(formData);
     setErrors((prev) => ({ ...prev, [key]: fieldErrors[key] }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setServerError(null);
     const fieldErrors = validate(formData);
 
     if (Object.keys(fieldErrors).length > 0) {
       setErrors(fieldErrors);
-      // Mark all required fields as touched so errors are visible
       setTouched({ name: true, email: true, message: true });
       return;
     }
 
     setStatus("sending");
-    setTimeout(() => {
+
+    try {
+      // 🚀 Hit your serverless Next.js API route
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || "Something went wrong.");
+      }
+
+      // Success Cycle
       setStatus("success");
       setFormData({ name: "", email: "", subject: "", message: "" });
       setErrors({});
       setTouched({});
-    }, 1500);
+    } catch (err: unknown) {
+      // Error Cycle
+      setStatus("error");
+      setServerError(err instanceof Error ? err.message : "Failed to deliver message.");
+    }
   };
 
   if (status === "success") {
@@ -121,6 +142,14 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} noValidate className="space-y-6">
+      {/* Server Global Error Alert Panel */}
+      {status === "error" && (
+        <div className="flex items-center gap-3 p-4 rounded-xl border border-red-500/20 bg-red-500/10 text-red-400 text-sm">
+          <AlertCircle className="w-5 h-5 shrink-0" />
+          <p>{serverError}</p>
+        </div>
+      )}
+
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         {/* Name */}
         <div className="flex flex-col space-y-1">
