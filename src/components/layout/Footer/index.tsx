@@ -5,13 +5,16 @@ import { ArrowUp } from "lucide-react";
 import Container from "../Container";
 
 export default function Footer() {
-  // 🚀 FIXED: Pure global trigger completely unaffected by component nesting bugs
-  const scrollToTop = () => {
-    if (typeof window !== "undefined") {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
+  // 🚀 FIXED: Isolated pointer execution completely unlinked from React's onClick bubble
+  const handleScrollInstant = (e: React.PointerEvent<HTMLButtonElement>) => {
+    // Only intercept primary touches (finger taps or mouse clicks)
+    if (e.isPrimary) {
+      if (typeof window !== "undefined") {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      }
     }
   };
 
@@ -24,23 +27,36 @@ export default function Footer() {
             Copyright © {new Date().getFullYear()} Snowwolf. All rights reserved.
           </p>
 
+          {/* 
+            🚀 CRITICAL TOUCH FIXES APPLIED HERE:
+            1. Used `onPointerDown` which fires the exact microsecond your skin makes contact, breaking through the hover trap.
+            2. Added `touch-action-none` to block the mobile device from thinking you are swiping or double-tapping.
+            3. Added `select-none` and explicit style properties to prevent accidental copy highlighting.
+            4. Kept hover effects completely isolated to `md:` (desktop breakpoint).
+          */}
           <button
-            onClick={scrollToTop}
+            onPointerDown={handleScrollInstant}
+            style={{ WebkitTapHighlightColor: "transparent" }} // Removes the laggy iOS grey flash box
             className="
               flex items-center justify-center 
               w-12 h-12 mb-10
               rounded-xl bg-white dark:bg-zinc-900 
               border border-zinc-200 dark:border-white/10 
               text-foreground transition-all duration-300 shadow-sm 
-              cursor-pointer touch-manipulation select-none
-              active:scale-110 active:bg-accent-300 dark:active:bg-accent-700
+              cursor-pointer select-none
+              
+              /* 📱 Mobile Touch Pipeline Rules */
+              touch-action-none pointer-events-auto
+              active:scale-95 active:bg-zinc-100 dark:active:bg-zinc-800
+              
+              /* 💻 Desktop Mechanics Only */
               md:hover:bg-accent md:hover:text-white 
               dark:md:hover:bg-accent dark:md:hover:text-white 
               md:hover:scale-110
             "
             aria-label="Scroll to top"
           >
-            <ArrowUp className="w-6 h-6 md:w-8 md:h-8" />
+            <ArrowUp className="w-5 h-5 md:w-6 md:h-6" />
           </button>
         </div>
       </Container>
