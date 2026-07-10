@@ -5,16 +5,26 @@ import { ArrowUp } from "lucide-react";
 import Container from "../Container";
 
 export default function Footer() {
-  // 🚀 FIXED: Isolated pointer execution completely unlinked from React's onClick bubble
-  const handleScrollInstant = (e: React.PointerEvent<HTMLButtonElement>) => {
-    // Only intercept primary touches (finger taps or mouse clicks)
-    if (e.isPrimary) {
-      if (typeof window !== "undefined") {
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth",
-        });
-      }
+  const forceScrollToTop = (e: React.MouseEvent<HTMLButtonElement> | React.TouchEvent<HTMLButtonElement>) => {
+    // 1. Terminate all React event propagation up the invalid HTML DOM tree
+    e.preventDefault();
+    e.stopPropagation();
+
+    if (typeof window !== "undefined") {
+      // 2. Kill custom virtual layout listeners (like Lenis) during the jump
+      document.documentElement.classList.add("js-scrolling-top");
+
+      // 3. Fallback to physical layout element targets if window.scrollTo is hijacked
+      const target = document.documentElement || document.body;
+      
+      // 4. Force instant native hardware coordinate adjustments
+      target.scrollTop = 0;
+      window.scrollTo({ top: 0, behavior: "auto" });
+
+      // 5. Release the frame lock after execution complete
+      setTimeout(() => {
+        document.documentElement.classList.remove("js-scrolling-top");
+      }, 50);
     }
   };
 
@@ -28,28 +38,28 @@ export default function Footer() {
           </p>
 
           {/* 
-            🚀 CRITICAL TOUCH FIXES APPLIED HERE:
-            1. Used `onPointerDown` which fires the exact microsecond your skin makes contact, breaking through the hover trap.
-            2. Added `touch-action-none` to block the mobile device from thinking you are swiping or double-tapping.
-            3. Added `select-none` and explicit style properties to prevent accidental copy highlighting.
-            4. Kept hover effects completely isolated to `md:` (desktop breakpoint).
+            🚀 THE MOBILE BULLETPROOF BUTTON SETUP:
+            - Handled by pointerup to run immediately as your finger leaves the screen (bypasses tap latency entirely)
+            - touch-action: none instructs mobile safari/chrome that this element has zero gesture relationships
           */}
           <button
-            onPointerDown={handleScrollInstant}
-            style={{ WebkitTapHighlightColor: "transparent" }} // Removes the laggy iOS grey flash box
+            onPointerUp={forceScrollToTop}
+            style={{ 
+              WebkitTapHighlightColor: "transparent",
+              touchAction: "none" 
+            }}
             className="
               flex items-center justify-center 
               w-12 h-12 mb-10
               rounded-xl bg-white dark:bg-zinc-900 
               border border-zinc-200 dark:border-white/10 
               text-foreground transition-all duration-300 shadow-sm 
-              cursor-pointer select-none
+              cursor-pointer select-none pointer-events-auto
               
-              /* 📱 Mobile Touch Pipeline Rules */
-              touch-action-none pointer-events-auto
-              active:scale-95 active:bg-zinc-100 dark:active:bg-zinc-800
+              /* 📱 Mobile Mechanical Click Responses */
+              active:scale-90 active:bg-zinc-100 dark:active:bg-zinc-800
               
-              /* 💻 Desktop Mechanics Only */
+              /* 💻 Isolated Desktop Pointer Mechanics Only */
               md:hover:bg-accent md:hover:text-white 
               dark:md:hover:bg-accent dark:md:hover:text-white 
               md:hover:scale-110
