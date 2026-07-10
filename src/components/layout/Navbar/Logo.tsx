@@ -4,7 +4,7 @@ export default function Logo() {
   return (
     <Link
       href="/"
-      className="text-xl text-foreground/70 md:text-2xl font-bold tracking-tight" >
+      className="text-lg text-foreground/70 md:text-xl font-bold tracking-tight" >
       <span className="text-accent/80 tracking-wider">&lt;</span>
 
       SnowWolf
