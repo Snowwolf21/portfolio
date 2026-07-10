@@ -41,8 +41,8 @@ const handleClick = () => {
         relative
         overflow-hidden
         rounded-3xl
-        border-4
-        border-accent/50
+        border-2
+        border-accent/80
         bg-card
         h-135
         transition-all
