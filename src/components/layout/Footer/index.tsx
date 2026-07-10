@@ -33,7 +33,7 @@ export default function Footer() {
               border border-zinc-200 dark:border-white/10 
               text-foreground transition-all duration-300 shadow-sm 
               cursor-pointer touch-manipulation select-none
-              active:scale-95 active:bg-zinc-100 dark:active:bg-zinc-800
+              active:scale-110 active:bg-accent-300 dark:active:bg-accent-700
               md:hover:bg-accent md:hover:text-white 
               dark:md:hover:bg-accent dark:md:hover:text-white 
               md:hover:scale-110
