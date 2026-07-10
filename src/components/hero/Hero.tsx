@@ -9,7 +9,7 @@ export default function Hero() {
       className="relative flex items-center overflow-hidden text-foreground"
     >
       <Container>
-        <div className="grid items-center gap-8 lg:grid-cols-2 p-4 mt-32 sm:mt-48 lg:mt-56">
+        <div className="grid items-center gap-8 lg:grid-cols-2 p-4 mt-40 sm:mt-48 lg:mt-56">
           <HeroContent />
           <HeroImage />
         </div>
