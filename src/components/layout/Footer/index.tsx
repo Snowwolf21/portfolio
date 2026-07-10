@@ -6,25 +6,30 @@ import Container from "../Container";
 
 export default function Footer() {
   const forceScrollToTop = (e: React.MouseEvent<HTMLButtonElement> | React.TouchEvent<HTMLButtonElement>) => {
-    // 1. Terminate all React event propagation up the invalid HTML DOM tree
     e.preventDefault();
     e.stopPropagation();
 
     if (typeof window !== "undefined") {
-      // 2. Kill custom virtual layout listeners (like Lenis) during the jump
-      document.documentElement.classList.add("js-scrolling-top");
-
-      // 3. Fallback to physical layout element targets if window.scrollTo is hijacked
-      const target = document.documentElement || document.body;
+      // 🚀 CRITICAL MOBILE ENGINE FIX:
+      // Temporarily override Next.js and global CSS smooth layouts
+      const htmlStyle = document.documentElement.style;
+      const originalScrollBehavior = htmlStyle.scrollBehavior;
       
-      // 4. Force instant native hardware coordinate adjustments
-      target.scrollTop = 0;
-      window.scrollTo({ top: 0, behavior: "auto" });
+      // 1. Force the layout engine into instantaneous hardware mode
+      htmlStyle.scrollBehavior = "auto";
 
-      // 5. Release the frame lock after execution complete
-      setTimeout(() => {
-        document.documentElement.classList.remove("js-scrolling-top");
-      }, 10);
+      // 2. Schedule the execution on the very next hardware frame update
+      requestAnimationFrame(() => {
+        // Direct layout root adjustments bypass JavaScript rendering queues
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+        window.scrollTo(0, 0);
+
+        // 3. Restore your smooth settings for standard finger swipes
+        requestAnimationFrame(() => {
+          htmlStyle.scrollBehavior = originalScrollBehavior;
+        });
+      });
     }
   };
 
@@ -38,12 +43,12 @@ export default function Footer() {
           </p>
 
           {/* 
-            🚀 THE MOBILE BULLETPROOF BUTTON SETUP:
-            - Handled by pointerup to run immediately as your finger leaves the screen (bypasses tap latency entirely)
-            - touch-action: none instructs mobile safari/chrome that this element has zero gesture relationships
+            📱 FIXED MECHANICAL POINTER TRIGGER:
+            Using onPointerDown fires code the exact millisecond your skin makes contact,
+            completely bypassing the mobile phone's gesture tracking delays.
           */}
           <button
-            onPointerUp={forceScrollToTop}
+            onPointerDown={forceScrollToTop}
             style={{ 
               WebkitTapHighlightColor: "transparent",
               touchAction: "none" 
@@ -56,10 +61,10 @@ export default function Footer() {
               text-foreground transition-all duration-300 shadow-sm 
               cursor-pointer select-none pointer-events-auto
               
-              /* 📱 Mobile Mechanical Click Responses */
+              /* Mobile Touch Actions */
               active:scale-90 active:bg-zinc-100 dark:active:bg-zinc-800
               
-              /* 💻 Isolated Desktop Pointer Mechanics Only */
+              /* Desktop Breakpoint Only */
               md:hover:bg-accent md:hover:text-white 
               dark:md:hover:bg-accent dark:md:hover:text-white 
               md:hover:scale-110
