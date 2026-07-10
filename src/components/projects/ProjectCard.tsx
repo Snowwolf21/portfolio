@@ -64,7 +64,7 @@ const handleClick = () => {
       />
 
       <div className="p-6 flex flex-col gap-2">
-        <h3 className="text-lg md:text-xl font-bold">
+        <h3 className="text-base md:text-xl font-bold">
           {project.title}
         </h3>
 

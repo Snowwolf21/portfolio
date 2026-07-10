@@ -11,7 +11,7 @@ export default function SectionHeading({
 }: Props) {
   return (
     <div className="mb-4 text-center">
-      <h2 className="text-4xl font-bold">
+      <h2 className="text-2xl md:text-3xl lg:text-3xl font-bold">
         <GradientText>{title}</GradientText>
       </h2>
 
