@@ -5,10 +5,8 @@ import { ArrowUp } from "lucide-react";
 import Container from "../Container";
 
 export default function Footer() {
-  const scrollToTop = (e: React.MouseEvent<HTMLButtonElement> | React.TouchEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    e.stopPropagation();
-
+  // 🚀 FIXED: Pure global trigger completely unaffected by component nesting bugs
+  const scrollToTop = () => {
     if (typeof window !== "undefined") {
       window.scrollTo({
         top: 0,
@@ -26,9 +24,7 @@ export default function Footer() {
             Copyright © {new Date().getFullYear()} Snowwolf. All rights reserved.
           </p>
 
-        
           <button
-            onTouchStart={scrollToTop}
             onClick={scrollToTop}
             className="
               flex items-center justify-center 
@@ -36,9 +32,8 @@ export default function Footer() {
               rounded-xl bg-white dark:bg-zinc-900 
               border border-zinc-200 dark:border-white/10 
               text-foreground transition-all duration-300 shadow-sm 
-              cursor-pointer touch-manipulation
+              cursor-pointer touch-manipulation select-none
               active:scale-95 active:bg-zinc-100 dark:active:bg-zinc-800
-              
               md:hover:bg-accent md:hover:text-white 
               dark:md:hover:bg-accent dark:md:hover:text-white 
               md:hover:scale-110
