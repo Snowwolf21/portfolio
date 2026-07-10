@@ -24,7 +24,7 @@ export default function Footer() {
       // 5. Release the frame lock after execution complete
       setTimeout(() => {
         document.documentElement.classList.remove("js-scrolling-top");
-      }, 50);
+      }, 10);
     }
   };
 
