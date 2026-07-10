@@ -31,10 +31,10 @@ export default function Footer() {
           <Button
             onClick={scrollToTop}
             onTouchStart={scrollToTop}
-            className="flex items-center justify-center w-10 h-10 rounded-xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-white/10 text-foreground hover:bg-accent hover:text-white dark:hover:bg-accent dark:hover:text-white transition-all duration-300 shadow-sm hover:scale-110 active:scale-95 cursor-pointer"
+            className="flex items-center mb-10 justify-center w-10 h-10 md:w-12 md:h-12 rounded-xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-white/10 text-foreground hover:bg-accent hover:text-white dark:hover:bg-accent dark:hover:text-white transition-all duration-300 shadow-sm hover:scale-110 active:scale-95 cursor-pointer"
             aria-label="Scroll to top"
           >
-            <ArrowUp className="w-5 h-5" />
+            <ArrowUp className="w-5 h-5 md:w-6 md:h-6" />
           </Button>
         </div>
       </Container>
