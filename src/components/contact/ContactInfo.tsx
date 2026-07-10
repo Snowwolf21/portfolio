@@ -2,6 +2,7 @@ import React from "react";
 import { contact } from "@/data/contact";
 import { Mail, Phone, MapPin } from "lucide-react";
 import GlassCard from "../ui/GlassCard";
+import Link from "next/link";
 
 export default function ContactInfo() {
   const infoItems = [
@@ -28,7 +29,7 @@ export default function ContactInfo() {
   return (
     <div className="space-y-6">
       <div className="space-y-3">
-        <h4 className="text-sm font-bold uppercase tracking-widest text-indigo-400">
+        <h4 className="text-sm font-bold uppercase tracking-widest text-accent">
           Contact Info
         </h4>
         <h3 className="text-3xl font-black text-foreground">
@@ -41,7 +42,7 @@ export default function ContactInfo() {
 
       <div className="space-y-4">
         {infoItems.map((item) => (
-          <a
+          <Link
             key={item.label}
             href={item.href}
             target={item.label === "Location" ? "_blank" : undefined}
@@ -49,7 +50,7 @@ export default function ContactInfo() {
             className="block group"
           >
             <GlassCard className="flex items-center gap-5 p-5 border border-white/5 bg-white/5 dark:bg-zinc-900/50 hover:border-accent/40 hover:bg-white/10 dark:hover:bg-zinc-900/80 transition-all duration-300 rounded-2xl shadow-sm">
-              <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-accent-glow/20 border border-accent/20 group-hover:scale-110 transition-transform duration-300">
+              <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-accent/5 border border-accent/20 group-hover:scale-110 transition-transform duration-300">
                 {item.icon}
               </div>
               <div className="space-y-0.5">
@@ -61,7 +62,7 @@ export default function ContactInfo() {
                 </p>
               </div>
             </GlassCard>
-          </a>
+          </Link>
         ))}
       </div>
     </div>

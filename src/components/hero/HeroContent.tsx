@@ -10,27 +10,27 @@ export default function HeroContent() {
         Hello there,👋🏽
       </span>
 
-      <div className="space-y-4 text-center md:text-left">
+      <div className="space-y-4 ">
         {/* Main Header */}
-        <h1 className="text-5xl font-black leading-none md:text-7xl tracking-tight text-foreground/60 ">
+        <h1 className="text-3xl font-black leading-none md:text-5xl tracking-tight text-foreground/60 ">
           I&apos;m{" "}
           <span className="text-foreground/60">
             Akinkunmi
           </span>
           <br className="hidden sm:inline" />
-          <span className="mt-4 bg-linear-to-r from-accent to-purple-500 bg-clip-text text-transparent ml-0 sm:ml-2 sm:mt-1 inline-block">
-            Adeyinka
+          <span className="mt-6  bg-clip-text text-accent/60 ml-0 sm:ml-2 sm:mt-1 inline-block">
+            Adeyinka,
           </span>
         </h1>
 
         {/* Sub Header */}
-        <h2 className="text-3xl font-bold md:text-4xl text-foreground/60 tracking-wide">
+        <h2 className="text-2xl font-bold md:text-3xl text-foreground/60 tracking-wide">
           Frontend Developer
         </h2>
       </div>
 
       {/* Description */}
-      <p className="max-w-xl text-lg text-muted-foreground leading-relaxed">
+      <p className="max-w-xl text-base text-muted-foreground leading-relaxed">
         I build modern, responsive, and scalable web applications with the React/Next.js and Node.js ecosystem, bringing creative and functional ideas to life on the web.
       </p>
 

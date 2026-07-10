@@ -338,9 +338,9 @@ export default function ContactForm() {
       <Button
         type="submit"
         disabled={status === "sending"}
-        className="flex w-full items-center justify-center gap-2 rounded-xl bg-linear-to-r from-accent to-indigo-600 px-8 py-6 font-bold
+        className="flex w-full items-center justify-center gap-2 rounded-xl bg-linear-to-r from-accent/40 to-accent px-8 py-6 font-bold
          text-white  text-base shadow-md transition-all 
-        duration-300 hover:scale-[1.02] hover:from-accent-hover hover:to-indigo-700 disabled:pointer-events-none disabled:opacity-50 sm:w-auto"
+        duration-300 hover:scale-[1.02] hover:from-accent-hover/80 hover:to-accent-hover/80 disabled:pointer-events-none disabled:opacity-50 sm:w-auto"
       >
         <span>
           {status === "sending"

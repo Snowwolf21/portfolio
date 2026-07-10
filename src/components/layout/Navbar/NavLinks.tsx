@@ -52,7 +52,7 @@ export default function NavLinks({className}: {className?: string}) {
 
               {/* Animated underline — visible on hover OR when active */}
               <span
-                className={`absolute bottom-0 left-0 h-[2px] rounded-full bg-accent-hover transition-all duration-300 ease-out
+                className={`absolute bottom-0 left-0 h-[2px] rounded-full bg-accent transition-all duration-300 ease-out
                   ${isActive ? "w-full opacity-100" : "w-0 opacity-0 group-hover:w-full group-hover:opacity-100"}
                 `}
               />

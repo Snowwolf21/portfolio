@@ -7,16 +7,19 @@ import {FiLinkedin, FiGithub, FiInstagram, FiTwitter} from "react-icons/fi"
 
 export default function HeroSocials() {
   return (
-    <div className="flex items-center md:justify-start justify-center gap-5 pt-4 ">
+    <div className="flex items-center md:justify-start justify-center gap-8 pt-4">
       <Link href="https://github.com/Snowwolf21"
       title="Github"
-      target="_blank">
+      target="_blank"
+      className="border-gray-900 dark:border-white/10">
+      
         <FiGithub className="h-6 w-6" />
       </Link>
 
       <Link href="https://www.linkedin.com/in/engakinkunmi/"
       title="Linkedin"
-      target="_blank">
+      target="_blank"
+      className="border-gray-500 dark:border-white/10">
         <FiLinkedin className="h-6 w-6" />
       </Link>
 

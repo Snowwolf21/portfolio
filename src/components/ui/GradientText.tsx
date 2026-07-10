@@ -12,10 +12,7 @@ export default function GradientText({
   return (
     <span
       className={`
-        bg-linear-to-r
-        from-cyan-400
-        via-blue-500
-        to-violet-500
+        bg-accent
         bg-clip-text
         text-transparent
         ${className}

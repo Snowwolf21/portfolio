@@ -5,6 +5,7 @@ import BackendGrid from "./BackendGrid";
 import FrontendGrid from "./FrontendGrid";
 import GlassCard from "@/components/ui/GlassCard";
 import { SiReact, SiNodedotjs } from "react-icons/si";
+import { Button } from "@/components/ui";
 
 export default function TransformativeStackCard() {
   const [isFlipped, setIsFlipped] = useState(false);
@@ -14,26 +15,28 @@ export default function TransformativeStackCard() {
       {/* 3D Flip Toggle Pill */}
       <div className="relative flex p-1 bg-white/5 dark:bg-zinc-900/50 backdrop-blur-md rounded-full border border-accent-hover/20 shadow-inner w-72">
         <div
-          className={`absolute top-1 bottom-1 rounded-full bg-accent-hover/40 border border-accent/30 shadow-sm transition-all duration-500 ease-out ${
+          className={`absolute top-1 bottom-1 rounded-full bg-accent/50 border border-accent/30 shadow-sm transition-all duration-500 ease-out ${
             isFlipped ? "left-[144px] right-1" : "left-1 right-[144px]"
           }`}
         />
-        <button
+        <Button
+        variant="secondary"
           onClick={() => setIsFlipped(false)}
-          className={`flex-1 py-2 text-sm font-bold text-center rounded-full z-10 transition-colors duration-300 cursor-pointer ${
-            !isFlipped ? "text-accent-foreground" : "text-muted-foreground hover:text-foreground"
+          className={`flex-1 py-4 text-sm font-bold text-center rounded-full z-10 transition-colors  duration-300 cursor-pointer ${
+            !isFlipped ? "text-accent-foreground bg-accent/10" : "text-muted-foreground hover:text-foreground"
           }`}
         >
           Frontend
-        </button>
-        <button
+        </Button>
+        <Button
+        variant="secondary"
           onClick={() => setIsFlipped(true)}
-          className={`flex-1 py-2 text-sm font-bold text-center rounded-full z-10 transition-colors duration-300 cursor-pointer ${
+          className={`flex-1 py-4 text-sm font-bold text-center rounded-full z-10 transition-colors duration-300 cursor-pointer ${
             isFlipped ? "text-accent-foreground" : "text-muted-foreground hover:text-foreground"
           }`}
         >
           Backend
-        </button>
+        </Button>
       </div>
 
       {/* 3D Card Container */}

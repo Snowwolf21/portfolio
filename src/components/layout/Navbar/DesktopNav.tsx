@@ -9,8 +9,10 @@ export default function DesktopNav() {
       <Logo />
 
       <NavLinks  className="items-center gap-8"/>
-        <ThemeToggle  />
-     <NavButton />
+       <div className="flex items-center gap-4">
+        <ThemeToggle />
+        <NavButton />
+       </div>
     
     </div>
   );
