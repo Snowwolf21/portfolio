@@ -21,10 +21,10 @@ export default function BackendGrid() {
           {backendSkills.map((skill) => (
             <div 
               key={skill.name}
-              className="p-2  rounded-2xl border border-accent/30 bg-white/5 dark:bg-zinc-900/50 hover:border-accent-hover/20 hover:bg-white/10 dark:hover:bg-accent-hover/20 transition-all duration-300 group flex flex-col justify-between h-20  shadow-sm hover:shadow-lg"
+              className="p-3 rounded-2xl border border-accent/30 bg-white/5 dark:bg-zinc-900/50 hover:border-accent-hover/20 hover:bg-white/10 dark:hover:bg-accent-hover/20 transition-all duration-300 group flex flex-col  h-20  shadow-sm hover:shadow-lg"
             >
-              <div className="flex flex-col sm:flex-col md:flex-row items-center justify-between">
-                <div className="flex flex-col md:flex-row items-center gap-2.5">
+              <div className="flex flex-col justify-center items-center ">
+                <div className="flex flex-col items-center ">
                   <div className="transition-transform duration-300 group-hover:rotate-12 group-hover:scale-110">
                     {getSkillIcon(skill.iconName, "w-5 h-5 sm:w-6 sm:h-6", skill.color)}
                   </div>
