@@ -15,24 +15,24 @@ export default function TransformativeStackCard() {
       {/* 3D Flip Toggle Pill */}
       <div className="relative flex p-1 bg-white/5 dark:bg-zinc-900/50 backdrop-blur-md rounded-full border border-accent-hover/20 shadow-inner w-72">
         <div
-          className={`absolute top-1 bottom-1 rounded-full bg-accent/50 border border-accent/30 shadow-sm transition-all duration-500 ease-out ${
+          className={`absolute top-1 bottom-1 rounded-full bg-accent-hover/50 border border-accent/30 shadow-sm transition-all duration-500 ease-out ${
             isFlipped ? "left-[144px] right-1" : "left-1 right-[144px]"
           }`}
         />
         <Button
-        variant="secondary"
+        variant="default"
           onClick={() => setIsFlipped(false)}
-          className={`flex-1 py-4 text-sm font-bold text-center rounded-full z-10 transition-colors  duration-300 cursor-pointer ${
-            !isFlipped ? "text-accent-foreground bg-accent/10" : "text-muted-foreground hover:text-foreground"
+          className={`flex-1 py-4 text-sm font-bold text-center rounded-full z-10 transition-colors active:scale-95 hover:bg-accent/50  duration-300 cursor-pointer ${
+            !isFlipped ? "text-accent-foreground bg-accent/80 " : "text-muted-foreground bg-accent/50"
           }`}
         >
           Frontend
         </Button>
         <Button
-        variant="secondary"
+        variant="default"
           onClick={() => setIsFlipped(true)}
-          className={`flex-1 py-4 text-sm font-bold text-center rounded-full z-10 transition-colors duration-300 cursor-pointer ${
-            isFlipped ? "text-accent-foreground" : "text-muted-foreground hover:text-foreground"
+          className={`flex-1 py-4 text-sm font-bold text-center rounded-full z-10 transition-colors active:scale-95 hover:bg-accent/50 ease-in-out duration-300 cursor-pointer  ${
+            isFlipped ? "text-accent-foreground bg-accent/70 " : "text-muted-foreground bg-accent/50"
           }`}
         >
           Backend

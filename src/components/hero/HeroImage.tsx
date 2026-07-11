@@ -4,9 +4,9 @@ import Kunmi from "../../assets/images/Kunmi.jpeg";
 
 export default function HeroImage() {
   return (
-    <div className="relative flex justify-center items-center">
+    <div className="relative flex justify-center items-center ">
       {/* Main Avatar Container */}
-      <div className="relative h-100 w-90 md:h-110 md:w-100 group">
+      <div className="relative h-100 w-80 md:h-100 md:w-110 group">
         {/* Neon Glow behind the card */}
         <div className="absolute inset-0 rounded-4xl bg-linear-to-br from-accent to-accent/60 blur-3xl opacity-30 group-hover:opacity-40 transition-opacity duration-500" />
         

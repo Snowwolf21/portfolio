@@ -1,13 +1,15 @@
 "use client";
 
+
 import { useState } from "react";
 import { Project } from "@/data/projects";
-
 import Card from "../ui/Card";
 import ProjectImage from "./ProjectImage";
 import ProjectOverlay from "./ProjectOverlay";
 import TechBadges from "./TechBadges";
 import React from "react";
+
+
 
 interface Props {
   project: Project;
@@ -68,7 +70,7 @@ const handleClick = () => {
           {project.title}
         </h3>
 
-        <p className="text-muted-foreground line-clamp-3">
+        <p className="text-xs md:text-base text-muted-foreground line-clamp-3">
           {project.description}
         </p>
     
