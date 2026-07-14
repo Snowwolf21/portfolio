@@ -66,7 +66,7 @@ const handleClick = () => {
         isActive={isActive}
       />
 
-      <div className="p-6 flex flex-col gap-4">
+      <div className="p-6 flex flex-col gap-2 md:gap-4">
         <h3 className="text-md md:text-lg font-bold">
           {project.title}
         </h3>
