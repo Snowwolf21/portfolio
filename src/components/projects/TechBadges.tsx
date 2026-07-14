@@ -69,43 +69,6 @@ interface Props {
  
 }
 
-// export default function TechBadges({ tech }: Props) {
-//   return (
-//     <div className="
-//       flex
-//       flex-wrap
-//       gap-2
-//       scale-75
-//       opacity-0
-//       group-hover:scale-100
-//       group-hover:opacity-100
-//       transition-all
-//       duration-500">
-
-//       {tech.map((item) => {
-//         const match = techIconMap[item];
-//         const Icon = match?.icon;
-//         const color = match?.color ?? "";
-
-//         return (
-//           <span
-//             key={item}
-//             className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-foreground/80 transition-colors hover:border-white/20 hover:bg-white/10"
-//           >
-//             {Icon ? (
-//               <Icon className={`w-3.5 h-3.5 shrink-0 ${color}`} />
-//             ) : (
-//               <HelpCircle className="w-3.5 h-3.5 shrink-0 text-foreground/40" />
-//             )}
-//             {item}
-//           </span>
-//         );
-//       })}
-//     </div>
-//   );
-// }
-
-
 
 export default function TechBadges({ tech }: Props) {
   return (
