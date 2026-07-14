@@ -24,8 +24,10 @@ import {
   SiFigma,
   SiPython,
   SiVsco,
+  SiOllama
 } from "react-icons/si";
-import { HelpCircle } from "lucide-react";
+import { HelpCircle} from "lucide-react";
+import {GiBearFace} from "react-icons/gi"
 import type { ComponentType, SVGProps } from "react";
 
 type IconComponent = ComponentType<SVGProps<SVGSVGElement>>;
@@ -58,6 +60,8 @@ const techIconMap: Record<string, { icon: IconComponent; color: string }> = {
   Figma: { icon: SiFigma, color: "text-pink-400" },
   VSCode: { icon: SiVsco, color: "text-blue-500" },
   Python: { icon: SiPython, color: "text-yellow-400" },
+  Zustand: { icon: GiBearFace, color: "text-yellow-400" },
+  Ollama: { icon: SiOllama, color: "text-yellow-400" },
 };
 
 interface Props {

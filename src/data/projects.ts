@@ -31,13 +31,13 @@ export const projects: Project[] = [
 
   {
     id: 2,
-    title: "AI Coding Agent",
+    title: "Coding Agent",
     description:
       "Streaming AI coding assistant capable of editing files inside the browser.",
-    image: "/projects/agent.png",
-    github: "#",
-    live: "#",
-    technologies: ["React", "OpenAI", "TypeScript", "Express"],
+    image: "/projects/coding-assistant-ui.jpg",
+    github: "https://github.com/Snowwolf21/coding-agent",
+    live: "https://coding-agent.vercel.app",
+    technologies: ["Next.js", "TypeScript", "Tailwind", "Ollama", "Node.js", "Express"],
     learnings: [
       "Streaming responses via Server-Sent Events (SSE)",
       "Managing async state with React hooks and refs",
