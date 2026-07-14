@@ -60,8 +60,8 @@ const techIconMap: Record<string, { icon: IconComponent; color: string }> = {
   Figma: { icon: SiFigma, color: "text-pink-400" },
   VSCode: { icon: SiVsco, color: "text-blue-500" },
   Python: { icon: SiPython, color: "text-yellow-400" },
-  Zustand: { icon: GiBearFace, color: "text-yellow-400" },
-  Ollama: { icon: SiOllama, color: "text-yellow-400" },
+  Zustand: { icon: GiBearFace, color: "text-yellow-500" },
+  Ollama: { icon: SiOllama, color: "text-yellow-500" },
 };
 
 interface Props {
