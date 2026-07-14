@@ -19,13 +19,13 @@ interface Props {
 export default function ProjectCard({ project }: Props) {
  
 const [isActive, setIsActive] = useState(false);
-const handlePointerEnter = (e: React.PointerEvent) => {
+const handlePointerEnter = () => {
   if (window.matchMedia("(hover: hover)").matches) {
     setIsActive(true);
   }
 };
 
-const handlePointerLeave = (e: React.PointerEvent) => {
+const handlePointerLeave = () => {
   if (window.matchMedia("(hover: hover)").matches) {
     setIsActive(false);
   }
@@ -43,13 +43,14 @@ const handleClick = () => {
         relative
         overflow-hidden
         rounded-3xl
-        border-2
-        border-accent/80
+        border
+        border-gray-300
         bg-card
-        h-135
+        h-120
+        md:h-135
         transition-all
         duration-500
-        hover:-translate-y-2
+        hover:-translate-y-1
         hover:shadow-2xl
         hover:border-accent/30
         cursor-pointer
@@ -65,12 +66,12 @@ const handleClick = () => {
         isActive={isActive}
       />
 
-      <div className="p-6 flex flex-col gap-2">
-        <h3 className="text-base md:text-xl font-bold">
+      <div className="p-6 flex flex-col gap-4">
+        <h3 className="text-md md:text-lg font-bold">
           {project.title}
         </h3>
 
-        <p className="text-xs md:text-base text-muted-foreground line-clamp-3">
+        <p className="text-xs md:text-sm text-muted-foreground line-clamp-3">
           {project.description}
         </p>
     
@@ -80,9 +81,7 @@ const handleClick = () => {
 
         <ProjectOverlay
           github={project.github}
-          live={project.live}
-       
-        />
+          live={project.live} />
       </div>
     </Card>
   );

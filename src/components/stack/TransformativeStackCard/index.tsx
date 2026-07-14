@@ -4,7 +4,7 @@ import { useState } from "react";
 import BackendGrid from "./BackendGrid";
 import FrontendGrid from "./FrontendGrid";
 import GlassCard from "@/components/ui/GlassCard";
-import { SiReact, SiNodedotjs } from "react-icons/si";
+// import { SiReact, SiNodedotjs } from "react-icons/si";
 import { Button } from "@/components/ui";
 
 export default function TransformativeStackCard() {
@@ -22,8 +22,8 @@ export default function TransformativeStackCard() {
         <Button
         variant="default"
           onClick={() => setIsFlipped(false)}
-          className={`flex-1 py-4 text-sm font-bold text-center rounded-full z-10 transition-colors active:scale-95 hover:bg-accent/50  duration-300 cursor-pointer ${
-            !isFlipped ? "text-accent-foreground bg-accent/80 " : "text-muted-foreground bg-accent/50"
+          className={`flex-1 py-4 text-sm font-bold text-center rounded-full z-10 bg-transparent transition-colors active:scale-95 hover:bg-accent/50  duration-300 cursor-pointer ${
+            !isFlipped ? "text-accent-foreground bg-accent/80 " : "text-muted-foreground"
           }`}
         >
           Frontend
@@ -31,8 +31,8 @@ export default function TransformativeStackCard() {
         <Button
         variant="default"
           onClick={() => setIsFlipped(true)}
-          className={`flex-1 py-4 text-sm font-bold text-center rounded-full z-10 transition-colors active:scale-95 hover:bg-accent/50 ease-in-out duration-300 cursor-pointer  ${
-            isFlipped ? "text-accent-foreground bg-accent/70 " : "text-muted-foreground bg-accent/50"
+          className={`flex-1 py-4 text-sm font-bold text-center rounded-full z-10 bg-transparent transition-colors active:scale-95 hover:bg-accent/50 ease-in-out duration-300 cursor-pointer  ${
+            isFlipped ? "text-accent-foreground bg-accent/70 " : "text-muted-foreground"
           }`}
         >
           Backend
@@ -42,14 +42,14 @@ export default function TransformativeStackCard() {
       {/* 3D Card Container */}
       <div className="relative w-full h-[520px] perspective-[1500px]">
         {/* Floating Rotating Emblem in the Center/Top */}
-        <div 
+        {/* <div 
           onClick={() => setIsFlipped(!isFlipped)}
           className="absolute left-1/2 -top-7 -translate-x-1/2 z-30 flex items-center justify-center w-14 h-14 rounded-full bg-background border border-accent/30 shadow-lg shadow-accent-glow/20 cursor-pointer transition-all duration-300 hover:scale-110 active:scale-95 group"
-        >
+        > */}
           {/* Outer rotating glow border */}
-          <div className="absolute inset-0 rounded-full border border-dashed border-accent/40 animate-[spin_10s_linear_infinite] group-hover:border-solid" />
+          {/* <div className="absolute inset-0 rounded-full border border-dashed border-accent/40 animate-[spin_10s_linear_infinite] group-hover:border-solid" /> */}
           
-          <div className={`transition-all duration-700 ease-in-out ${isFlipped ? "transform-[rotateY(180deg)] text-emerald-400" : "text-sky-400"}`}>
+          {/* <div className={`transition-all duration-700 ease-in-out ${isFlipped ? "transform-[rotateY(180deg)] text-emerald-400" : "text-sky-400"}`}>
             {isFlipped ? (
               <SiNodedotjs className="w-7 h-7" />
             ) : (
@@ -58,8 +58,8 @@ export default function TransformativeStackCard() {
                 style={{ animation: "spin 8s linear infinite" }}
               />
             )}
-          </div>
-        </div>
+          </div> */}
+        {/* </div> */}
 
         {/* The rotating card */}
         <div

@@ -13,18 +13,19 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: 1,
-    title: "Developer Portfolio",
+    title: "RSS Feed Reader",
     description:
-      "Modern animated portfolio built with Next.js, TypeScript and Tailwind CSS.",
-    image: "/projects/portfolio.png",
-    github: "#",
-    live: "#",
-    technologies: ["Next.js", "TypeScript", "Tailwind", "Framer Motion"],
+      "Personal project - A modern, feature-rich RSS feed reader built from scratch. Features include read/unread tracking, article saving, subscription management, authentication, and a premium UI with dark mode.",
+    image: "/projects/rss-feed.png",
+    github: "https://github.com/Snowwolf21/frontpage_feed_reader_main",
+    live: "https://snowwolfrssfeed.vercel.app",
+    technologies: ["Next.js", "TypeScript", "Tailwind", "Zustand", "Redis"],
     learnings: [
-      "Scroll-driven animations with CSS animation-timeline",
-      "Theme switching without flash using inline head scripts",
-      "3D CSS card flip with backface-visibility",
-      "IntersectionObserver for active nav tracking",
+      "Build a full stack web application using Next.js",
+      "Authentication with JWT (JSON Web Tokens)",
+      "Frontend Encryption and decryption using crypto-js",
+      "State management with Zustand",
+      "Parsing of RSS feeds"
     ],
   },
 
@@ -42,18 +43,19 @@ export const projects: Project[] = [
       "Managing async state with React hooks and refs",
       "Prompt engineering and token optimisation",
       "Sandboxed code execution with Web Workers",
+      "Parsing of RSS feeds"
     ],
   },
 
   {
     id: 3,
-    title: "Water Factory System",
+    title: "Stock Inventory Management System",
     description:
-      "Production monitoring dashboard for water manufacturing workflow.",
-    image: "/projects/water.png",
-    github: "#",
-    live: "#",
-    technologies: ["React", "Node", "MongoDB", "Tailwind"],
+      "Web-based stock inventory management system built to streamline stock control and order processing.",
+    image: "/projects/stock.png",
+    github: "https://github.com/Snowwolf21/stock-management",
+    live: "https://stock-management-main.vercel.app",
+    technologies: ["Next.js", "TypeScript", "Tailwind", "Zustand"],
     learnings: [
       "Real-time data polling with REST APIs",
       "Role-based authentication using JWT",

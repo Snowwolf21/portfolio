@@ -9,9 +9,10 @@ type FormData = {
   email: string;
   subject: string;
   message: string;
+  honey: string; // Honeypot bot detector field
 };
 
-type FormErrors = Partial<Record<keyof FormData, string>>;
+type FormErrors = Partial<Record<keyof Omit<FormData, "honey">, string>>;
 
 function validate(data: FormData): FormErrors {
   const errors: FormErrors = {};
@@ -37,11 +38,15 @@ function validate(data: FormData): FormErrors {
   return errors;
 }
 
-function FieldError({ message }: { message?: string }) {
+function FieldError({ message, id }: { message?: string; id: string }) {
   if (!message) return null;
 
   return (
-    <p className="mt-1.5 flex items-center gap-1.5 text-xs text-red-400 animate-in fade-in slide-in-from-top-1 duration-200">
+    <p
+      id={id}
+      aria-live="polite"
+      className="mt-1.5 flex items-center gap-1.5 text-xs text-red-400 animate-in fade-in slide-in-from-top-1 duration-200"
+    >
       <AlertCircle className="w-3.5 h-3.5 shrink-0" />
       {message}
     </p>
@@ -63,6 +68,7 @@ export default function ContactForm() {
     email: "",
     subject: "",
     message: "",
+    honey: "",
   });
 
   const [errors, setErrors] = useState<FormErrors>({});
@@ -72,16 +78,13 @@ export default function ContactForm() {
   >({});
 
   const [submitted, setSubmitted] = useState(false);
-
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
-
   const [serverError, setServerError] = useState<string | null>(null);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
-
     const key = name as keyof FormData;
 
     const updatedData = {
@@ -93,10 +96,11 @@ export default function ContactForm() {
 
     if (submitted || touched[key]) {
       const validation = validate(updatedData);
+      const k = key as keyof Omit<FormData, "honey">;
 
       setErrors((prev) => ({
         ...prev,
-        [key]: validation[key],
+        [k]: validation[k],
       }));
     }
   };
@@ -105,6 +109,7 @@ export default function ContactForm() {
     e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const key = e.target.name as keyof FormData;
+    const k = key as keyof Omit<FormData, "honey">;
 
     setTouched((prev) => ({
       ...prev,
@@ -115,7 +120,7 @@ export default function ContactForm() {
 
     setErrors((prev) => ({
       ...prev,
-      [key]: validation[key],
+      [k]: validation[k],
     }));
   };
 
@@ -125,8 +130,27 @@ export default function ContactForm() {
     setSubmitted(true);
     setServerError(null);
 
-    const validation = validate(formData);
+    // 1. Client-side Honeypot Check
+    if (formData.honey) {
+      // Deceive the bot by simulating instant success
+      setStatus("sending");
+      setTimeout(() => {
+        setStatus("success");
+        setFormData({
+          name: "",
+          email: "",
+          subject: "",
+          message: "",
+          honey: "",
+        });
+        setErrors({});
+        setTouched({});
+        setSubmitted(false);
+      }, 1000);
+      return;
+    }
 
+    const validation = validate(formData);
     setErrors(validation);
 
     if (Object.keys(validation).length > 0) {
@@ -157,6 +181,7 @@ export default function ContactForm() {
         email: "",
         subject: "",
         message: "",
+        honey: "",
       });
 
       setErrors({});
@@ -164,7 +189,6 @@ export default function ContactForm() {
       setSubmitted(false);
     } catch (err) {
       setStatus("error");
-
       setServerError(
         err instanceof Error
           ? err.message
@@ -199,6 +223,8 @@ export default function ContactForm() {
     );
   }
 
+  const isSending = status === "sending";
+
   return (
     <form
       onSubmit={handleSubmit}
@@ -206,146 +232,172 @@ export default function ContactForm() {
       className="space-y-6"
     >
       {status === "error" && (
-        <div className="flex items-center gap-3 rounded-xl border border-red-500/20 bg-red-500/10 p-4 text-sm text-red-400">
+        <div role="alert" className="flex items-center gap-3 rounded-xl border border-red-500/20 bg-red-500/10 p-4 text-sm text-red-400">
           <AlertCircle className="h-5 w-5 shrink-0" />
           {serverError}
         </div>
       )}
 
-      <div className="grid gap-6 sm:grid-cols-2">
-        {/* Name */}
+      {/* Disabling all inputs using fieldset while email is in transit */}
+      <fieldset disabled={isSending} className="space-y-6 border-0 p-0 m-0">
+        
+        {/* Spam Honeypot Field (hidden from screen readers and visual viewport) */}
+        <div className="absolute overflow-hidden opacity-0 w-0 h-0 -z-50 pointer-events-none" aria-hidden="true">
+          <label htmlFor="honey">Do not fill this field if you are human</label>
+          <input
+            id="honey"
+            name="honey"
+            type="text"
+            value={formData.honey}
+            onChange={handleChange}
+            tabIndex={-1}
+            autoComplete="off"
+          />
+        </div>
 
+        <div className="grid gap-6 sm:grid-cols-2">
+          {/* Name */}
+          <div>
+            <label
+              htmlFor="name"
+              className="mb-2 block text-xs font-bold uppercase tracking-wider text-muted-foreground"
+            >
+              Your Name <span className="text-red-400">*</span>
+            </label>
+
+            <input
+              id="name"
+              name="name"
+              type="text"
+              autoComplete="name"
+              value={formData.name}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              placeholder="Enter your name"
+              aria-invalid={!!((submitted || touched.name) && errors.name)}
+              aria-describedby={((submitted || touched.name) && errors.name) ? "name-error" : undefined}
+              className={`${baseInput} ${
+                (submitted || touched.name) && errors.name
+                  ? invalidInput
+                  : validInput
+              }`}
+            />
+
+            <FieldError
+              id="name-error"
+              message={
+                submitted || touched.name
+                  ? errors.name
+                  : undefined
+              }
+            />
+          </div>
+
+          {/* Email */}
+          <div>
+            <label
+              htmlFor="email"
+              className="mb-2 block text-xs font-bold uppercase tracking-wider text-muted-foreground"
+            >
+              Your Email <span className="text-red-400">*</span>
+            </label>
+
+            <input
+              id="email"
+              name="email"
+              type="email"
+              autoComplete="email"
+              value={formData.email}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              placeholder="Enter your email"
+              aria-invalid={!!((submitted || touched.email) && errors.email)}
+              aria-describedby={((submitted || touched.email) && errors.email) ? "email-error" : undefined}
+              className={`${baseInput} ${
+                (submitted || touched.email) && errors.email
+                  ? invalidInput
+                  : validInput
+              }`}
+            />
+
+            <FieldError
+              id="email-error"
+              message={
+                submitted || touched.email
+                  ? errors.email
+                  : undefined
+              }
+            />
+          </div>
+        </div>
+
+        {/* Subject */}
         <div>
           <label
-            htmlFor="name"
+            htmlFor="subject"
             className="mb-2 block text-xs font-bold uppercase tracking-wider text-muted-foreground"
           >
-            Your Name <span className="text-red-400">*</span>
+            Subject
           </label>
 
           <input
-            id="name"
-            name="name"
-            value={formData.name}
+            id="subject"
+            name="subject"
+            type="text"
+            autoComplete="off"
+            value={formData.subject}
+            onChange={handleChange}
+            placeholder="Collaboration Inquiry"
+            className={`${baseInput} ${validInput}`}
+          />
+        </div>
+
+        {/* Message */}
+        <div>
+          <label
+            htmlFor="message"
+            className="mb-2 block text-xs font-bold uppercase tracking-wider text-muted-foreground"
+          >
+            Your Message <span className="text-red-400">*</span>
+          </label>
+
+          <textarea
+            id="message"
+            name="message"
+            rows={5}
+            value={formData.message}
             onChange={handleChange}
             onBlur={handleBlur}
-            placeholder="Enter your name"
-            className={`${baseInput} ${
-              (submitted || touched.name) && errors.name
+            placeholder="Hi, I'd love to work together..."
+            aria-invalid={!!((submitted || touched.message) && errors.message)}
+            aria-describedby={((submitted || touched.message) && errors.message) ? "message-error" : undefined}
+            className={`${baseInput} resize-none ${
+              (submitted || touched.message) && errors.message
                 ? invalidInput
                 : validInput
             }`}
           />
 
           <FieldError
+            id="message-error"
             message={
-              submitted || touched.name
-                ? errors.name
+              submitted || touched.message
+                ? errors.message
                 : undefined
             }
           />
         </div>
-
-        {/* Email */}
-
-        <div>
-          <label
-            htmlFor="email"
-            className="mb-2 block text-xs font-bold uppercase tracking-wider text-muted-foreground"
-          >
-            Your Email <span className="text-red-400">*</span>
-          </label>
-
-          <input
-            id="email"
-            name="email"
-            type="email"
-            value={formData.email}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            placeholder="Enter your email"
-            className={`${baseInput} ${
-              (submitted || touched.email) && errors.email
-                ? invalidInput
-                : validInput
-            }`}
-          />
-
-          <FieldError
-            message={
-              submitted || touched.email
-                ? errors.email
-                : undefined
-            }
-          />
-        </div>
-      </div>
-
-      {/* Subject */}
-
-      <div>
-        <label
-          htmlFor="subject"
-          className="mb-2 block text-xs font-bold uppercase tracking-wider text-muted-foreground"
-        >
-          Subject
-        </label>
-
-        <input
-          id="subject"
-          name="subject"
-          value={formData.subject}
-          onChange={handleChange}
-          placeholder="Collaboration Inquiry"
-          className={`${baseInput} ${validInput}`}
-        />
-      </div>
-
-      {/* Message */}
-
-      <div>
-        <label
-          htmlFor="message"
-          className="mb-2 block text-xs font-bold uppercase tracking-wider text-muted-foreground"
-        >
-          Your Message <span className="text-red-400">*</span>
-        </label>
-
-        <textarea
-          id="message"
-          name="message"
-          rows={5}
-          value={formData.message}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          placeholder="Hi, I'd love to work together..."
-          className={`${baseInput} resize-none ${
-            (submitted || touched.message) && errors.message
-              ? invalidInput
-              : validInput
-          }`}
-        />
-
-        <FieldError
-          message={
-            submitted || touched.message
-              ? errors.message
-              : undefined
-          }
-        />
-      </div>
+      </fieldset>
 
       <Button
         type="submit"
-        disabled={status === "sending"}
+        disabled={isSending}
         className="flex w-full items-center justify-center gap-2 rounded-xl bg-linear-to-r from-accent/40 to-accent px-8 py-6 font-bold
-         text-white  text-base shadow-md transition-all 
+         text-white text-base shadow-md transition-all 
         duration-300 hover:scale-[1.02] hover:from-accent-hover/80 hover:to-accent-hover/80 disabled:pointer-events-none disabled:opacity-50 sm:w-auto"
       >
         <span>
-          {status === "sending"
-            ? "Sending..."
-            : "Send Message"}
+          {isSending ? "Sending..." : "Send Message"}
         </span>
 
         <Send className="h-4 w-4" />
