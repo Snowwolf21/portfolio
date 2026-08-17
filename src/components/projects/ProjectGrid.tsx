@@ -8,8 +8,8 @@ import { ChevronDown, ChevronUp } from "lucide-react";
 export default function ProjectGrid() {
   const [showAll, setShowAll] = useState(false);
 
-  const visibleProjects = showAll ? projects : projects.slice(0, 3);
-  const hasMoreProjects = projects.length > 3;
+  const visibleProjects = showAll ? projects : projects.slice(0, 2);
+  const hasMoreProjects = projects.length > 2;
 
   return (
     <div className="flex flex-col items-center gap-8">
