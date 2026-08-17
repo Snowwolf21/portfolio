@@ -63,4 +63,20 @@ export const projects: Project[] = [
       "MongoDB aggregation pipelines for metrics",
     ],
   },
+
+  {
+    id: 4,
+    title: "Personal Finance Dashboard",
+    description:
+      "Personal Finance Dashboard",
+    image: "/projects/personal-finance.png",
+    github: "https://github.com/Snowwolf21/personal-finance",
+    live: "https://personal-finance-snowwolfdev.vercel.app/",
+    technologies: ["Next.js", "TypeScript", "Tailwind", "Zustand"],
+    learnings: [
+            "Url State Driven Synchronization",
+            "Responsive CSS Grid Table Design",
+            "State Management with Zustand",
+    ],
+  }
 ];

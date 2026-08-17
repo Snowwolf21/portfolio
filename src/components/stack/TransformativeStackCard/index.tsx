@@ -16,7 +16,7 @@ export default function TransformativeStackCard() {
       <div className="relative flex p-1 bg-white/5 dark:bg-zinc-900/50 backdrop-blur-md rounded-full border border-accent-hover/20 shadow-inner w-72">
         <div
           className={`absolute top-1 bottom-1 rounded-full bg-accent-hover/50 border border-accent/30 shadow-sm transition-all duration-500 ease-out ${
-            isFlipped ? "left-[144px] right-1" : "left-1 right-[144px]"
+            isFlipped ? "left-36 right-1" : "left-1 right-36"
           }`}
         />
         <Button
@@ -40,27 +40,7 @@ export default function TransformativeStackCard() {
       </div>
 
       {/* 3D Card Container */}
-      <div className="relative w-full h-[520px] perspective-[1500px]">
-        {/* Floating Rotating Emblem in the Center/Top */}
-        {/* <div 
-          onClick={() => setIsFlipped(!isFlipped)}
-          className="absolute left-1/2 -top-7 -translate-x-1/2 z-30 flex items-center justify-center w-14 h-14 rounded-full bg-background border border-accent/30 shadow-lg shadow-accent-glow/20 cursor-pointer transition-all duration-300 hover:scale-110 active:scale-95 group"
-        > */}
-          {/* Outer rotating glow border */}
-          {/* <div className="absolute inset-0 rounded-full border border-dashed border-accent/40 animate-[spin_10s_linear_infinite] group-hover:border-solid" /> */}
-          
-          {/* <div className={`transition-all duration-700 ease-in-out ${isFlipped ? "transform-[rotateY(180deg)] text-emerald-400" : "text-sky-400"}`}>
-            {isFlipped ? (
-              <SiNodedotjs className="w-7 h-7" />
-            ) : (
-              <SiReact 
-                className="w-7 h-7" 
-                style={{ animation: "spin 8s linear infinite" }}
-              />
-            )}
-          </div> */}
-        {/* </div> */}
-
+      <div className="relative w-full h-130 perspective-[1500px]">
         {/* The rotating card */}
         <div
           className={`relative w-full h-full duration-700 transition-all ease-out transform-style-3d transform-3d ${isFlipped ? "transform-[rotateY(180deg)]" : ""}`}
