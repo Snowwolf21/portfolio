@@ -28,7 +28,7 @@ export default function FrontendGrid() {
                   <div className="transition-transform duration-300 group-hover:rotate-12 group-hover:scale-110">
                     {getSkillIcon(skill.iconName, "w-5 h-5 sm:w-6 sm:h-6", skill.color)}
                   </div>
-                  <span className="text-xs md:text-sm font-semibold text-foreground/90 group-hover:text-foreground transition-colors truncate max-w-[90px] sm:max-w-none">
+                  <span className="text-xs md:text-sm font-semibold text-foreground/90 group-hover:text-foreground transition-colors truncate max-w-22.5 sm:max-w-none">
                     {skill.name}
                   </span>
                 </div>

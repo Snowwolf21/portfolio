@@ -4,7 +4,7 @@
 
 /* --- Custom Utility Variants --- */
 @custom-variant dark (&:is(.dark *));
-@variant dark (&:where(.dark, .dark *));
+@custom-variant dark (&:where(.dark, .dark *));
 
 /* --- Core Keyframes & Utility Animations --- */
 @keyframes float {
