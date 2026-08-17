@@ -53,7 +53,7 @@ const handleClick = () => {
         hover:-translate-y-1
         hover:shadow-2xl
         hover:border-accent/30
-        cursor-pointer
+       
       "
   onPointerEnter={handlePointerEnter}
   onPointerLeave={handlePointerLeave}
