@@ -68,7 +68,7 @@ export const projects: Project[] = [
     id: 4,
     title: "Personal Finance Dashboard",
     description:
-      "Personal Finance Dashboard",
+      "Personal Finance Management built to track income and expenses, analyse spending patterns, and manage personal budgets.",
     image: "/projects/personal-finance.png",
     github: "https://github.com/Snowwolf21/personal-finance",
     live: "https://personal-finance-snowwolfdev.vercel.app/",
