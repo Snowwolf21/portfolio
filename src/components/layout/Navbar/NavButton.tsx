@@ -1,8 +1,13 @@
-export default function NavButton() {
+
+interface NavButtonProps {
+  onClick?: () => void;
+}
+
+export default function NavButton({ onClick }: NavButtonProps) {
   return (
-    /* 🚀 FIXED: Standard <a> link optimized for zero-delay browser click delivery */
-    <a 
-      href="#contact" 
+    <a
+      href="#contact"
+      onClick={onClick}
       className="inline-flex items-center justify-center text-base font-medium bg-accent/70 text-primary-foreground hover:text-gray-200 p-5 h-10 rounded-lg cursor-pointer transition-all duration-300 ease-in-out active:scale-95 md:hover:bg-accent-hover md:hover:scale-105 md:hover:shadow-lg"
     >
       Hire Me

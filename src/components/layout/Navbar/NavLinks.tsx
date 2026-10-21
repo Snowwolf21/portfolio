@@ -5,7 +5,12 @@ import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
 import { navigation } from "@/data/navigation";
 
-export default function NavLinks({className}: {className?: string}) {
+interface NavLinksProps {
+  className?: string;
+  onLinkClick?: () => void;
+}
+
+export default function NavLinks({ className, onLinkClick }: NavLinksProps) {
   const [activeSection, setActiveSection] = useState<string>("#home");
 
   useEffect(() => {
@@ -43,7 +48,10 @@ export default function NavLinks({className}: {className?: string}) {
           <li key={item.href} className="relative flex flex-col items-center">
             <Link
               href={item.href}
-              onClick={() => setActiveSection(item.href)}
+              onClick={() => {
+                setActiveSection(item.href)
+                onLinkClick?.()
+              }}
               className={`relative pb-1 text-base font-semibold tracking-wide transition-colors duration-200 group
                 ${isActive ? "text-foreground/70" : "text-foreground/70 hover:text-foreground"}
               `}

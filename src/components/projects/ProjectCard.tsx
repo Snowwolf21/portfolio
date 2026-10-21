@@ -46,7 +46,7 @@ const handleClick = () => {
         border-gray-300
         bg-card
         h-120
-        md:h-135
+        md:h-130
         transition-all
         duration-500
         hover:-translate-y-1
@@ -72,10 +72,6 @@ const handleClick = () => {
         <p className="text-xs md:text-sm text-muted-foreground line-clamp-4">
           {project.description}
         </p>
-    
-        {/* <TechBadges
-          tech={project.technologies}
-        /> */}
 
         <ProjectOverlay
           github={project.github}
