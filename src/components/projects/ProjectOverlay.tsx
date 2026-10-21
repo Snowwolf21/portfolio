@@ -11,7 +11,7 @@ interface Props {
 export default function ProjectOverlay({ github, live }: Props) {
   return (
    <div
-      className={`w-full flex justify-between transition-all duration-500`}
+      className={`w-64 flex justify-between transition-all duration-500`}
     >
       <Link
         href={github}

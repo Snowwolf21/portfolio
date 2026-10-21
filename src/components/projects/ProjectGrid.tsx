@@ -13,7 +13,7 @@ export default function ProjectGrid() {
 
   return (
     <div className="flex flex-col items-center gap-8">
-      <div className="grid gap-4 md:gap-6 md:grid-cols-2 xl:grid-cols-3 w-full">
+      <div className="grid gap-4 md:gap-8 md:grid-cols-2 xl:grid-cols-2 w-full">
         {visibleProjects.map((project) => (
           <ProjectCard
             key={project.id}

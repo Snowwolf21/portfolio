@@ -15,7 +15,7 @@ export default function ProjectImage({
   isActive,
 }: Props) {
   return (
-    <div className="relative h-56 overflow-hidden rounded-2xl">
+    <div className="relative h-70 overflow-hidden rounded-2xl">
       <Image
         src={src}
         alt={title}

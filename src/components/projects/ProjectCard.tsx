@@ -6,7 +6,6 @@ import { Project } from "@/data/projects";
 import Card from "../ui/Card";
 import ProjectImage from "./ProjectImage";
 import ProjectOverlay from "./ProjectOverlay";
-import TechBadges from "./TechBadges";
 import React from "react";
 
 
@@ -52,8 +51,7 @@ const handleClick = () => {
         duration-500
         hover:-translate-y-1
         hover:shadow-2xl
-        hover:border-accent/30
-       
+        hover:border-accent/30      
       "
   onPointerEnter={handlePointerEnter}
   onPointerLeave={handlePointerLeave}
@@ -71,13 +69,13 @@ const handleClick = () => {
           {project.title}
         </h3>
 
-        <p className="text-xs md:text-sm text-muted-foreground line-clamp-3">
+        <p className="text-xs md:text-sm text-muted-foreground line-clamp-4">
           {project.description}
         </p>
     
-        <TechBadges
+        {/* <TechBadges
           tech={project.technologies}
-        />
+        /> */}
 
         <ProjectOverlay
           github={project.github}

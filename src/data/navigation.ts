@@ -3,6 +3,11 @@ export const navigation = [
     title: "Home",
     href: "#home",
   },
+
+  {
+    title: "Projects",
+    href: "#projects",
+  },
   {
     title: "About",
     href: "#about",
@@ -11,10 +16,7 @@ export const navigation = [
     title: "Stack",
     href: "#stack",
   },
-  {
-    title: "Projects",
-    href: "#projects",
-  },
+  
   {
     title: "Contact",
     href: "#contact",
