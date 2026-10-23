@@ -41,12 +41,11 @@ const handleClick = () => {
       className="
         relative
         overflow-hidden
-        rounded-3xl
+        rounded-lg
         border
         border-gray-300
         bg-card
-        h-120
-        md:h-130
+        h-145
         transition-all
         duration-500
         hover:-translate-y-1
@@ -69,7 +68,7 @@ const handleClick = () => {
           {project.title}
         </h3>
 
-        <p className="text-xs md:text-sm text-muted-foreground line-clamp-4">
+        <p className="text-xs md:text-sm text-muted-foreground ">
           {project.description}
         </p>
 

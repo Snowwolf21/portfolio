@@ -15,13 +15,14 @@ export default function ProjectImage({
   isActive,
 }: Props) {
   return (
-    <div className="relative h-70 overflow-hidden rounded-2xl">
+    <div className="relative h-70 overflow-hidden rounded-md">
       <Image
         src={src}
         alt={title}
         fill
+        loading="eager"
         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-        className={`object-cover transition-transform duration-700 ${isActive ? "scale-110" : "scale-100"}
+        className={`object-fit transition-transform duration-700 ${isActive ? "scale-110" : "scale-100"}
         `}
       />
 
@@ -32,7 +33,7 @@ export default function ProjectImage({
           px-5 py-4 ${ isActive ? "translate-y-0 opacity-100" : "translate-y-full opacity-0" }
         `}
       >
-        <p className="mb-3 text-[10px] font-black uppercase tracking-[0.18em] text-accent">
+        <p className="mb-3 text-[10px] font-black uppercase tracking-[0.18em] text-zinc-200">
           What I Learned
         </p>
 

@@ -3,7 +3,7 @@
 @import "shadcn/tailwind.css";
 
 /* --- Custom Utility Variants --- */
-@custom-variant dark (&:is(.dark *));
+
 @custom-variant dark (&:where(.dark, .dark *));
 
 /* --- Core Keyframes & Utility Animations --- */
@@ -26,109 +26,116 @@
 }
 
 /* --- Professional Developer Design Tokens --- */
+
 :root {
-  color-scheme: light dark;
+  color-scheme: light;
   --radius: 0.625rem;
 
-  /* --- Solid Developer Light Mode Theme --- */
-  --background: oklch(0.985 0.004 247.83);    /* Crisp Slate-50 Background */
-  --foreground: oklch(0.129 0.014 247.83);    /* Deep Slate-950 Contrast Copy */
-  
-  --card: oklch(1 0 0);                       /* Solid White Cards */
-  --card-foreground: oklch(0.129 0.014 247.83);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.014 247.83);
-  
-  --primary: oklch(0.208 0.019 247.83);       /* Slate-900 Primary Action */
-  --primary-foreground: oklch(0.985 0.004 247.83);
-  
-  --secondary: oklch(0.922 0.008 247.83);     /* Slate-100 Structural Elements */
-  --secondary-foreground: oklch(0.208 0.019 247.83);
-  
-  --muted: oklch(0.922 0.008 247.83);
-  --muted-foreground: oklch(0.444 0.017 247.83); /* Slate-500 Meta Text */
-  
-  /* Accent Tokens: Professional Engineering Indigo */
-  --accent: oklch(0.489 0.198 261.05);        /* Indigo-600 Focus Accent */
-  --accent-foreground: oklch(1 0 0);
-  --accent-hover: oklch(0.407 0.187 260.11);  /* Indigo-700 Hover */
-  --accent-glow: rgba(79, 70, 229, 0.12);
+  /* Warm sepia background and typography */
+  --background: #f4eee3;
+  --foreground: #38291f;
+  --card: #fbf6ed;
+  --card-foreground: #38291f;
+  --popover: #fbf6ed;
+  --popover-foreground: #38291f;
 
-  --card-bg: oklch(1 0 0 / 0.85);             /* Semi-solid High Readability Panel */
-  --card-border: oklch(0.871 0.012 247.83);   /* Clean Slate-200 Border */
-  --nav-bg: oklch(0.985 0.004 247.83 / 0.85);
-  
-  --border: oklch(0.871 0.012 247.83);
-  --input: oklch(0.871 0.012 247.83);
-  --ring: oklch(0.489 0.198 261.05 / 0.5);
+  /* Warm brown primary */
+  --primary: #6f4e37;
+  --primary-foreground: #fff8ed;
 
-  --scrollbar-thumb: oklch(0.817 0.015 247.83);
-  --scrollbar-track: oklch(0.957 0.006 247.83);
+  --secondary: #e8dcc9;
+  --secondary-foreground: #493628;
+  --muted: #e8dcc9;
+  --muted-foreground: #786451;
+
+  /* Terracotta accent */
+  --accent: #a65f3f;
+  --accent-foreground: #fff8ed;
+  --accent-hover: #85472f;
+  --accent-glow: rgba(166, 95, 63, 0.18);
+
+  /* Surfaces and borders */
+  --card-bg: rgba(251, 246, 237, 0.88);
+  --card-border: #dfcfb9;
+  --nav-bg: rgba(244, 238, 227, 0.9);
+  --border: #dfcfb9;
+  --input: #dfcfb9;
+  --ring: rgba(166, 95, 63, 0.5);
+
+  /* Scrollbar */
+  --scrollbar-thumb: #c5ad91;
+  --scrollbar-track: #eee4d5;
 
   /* Charts */
-  --chart-1: oklch(0.489 0.198 261.05);
-  --chart-2: oklch(0.208 0.019 247.83);
-  --chart-3: oklch(0.444 0.017 247.83);
-  --chart-4: oklch(0.708 0.012 247.83);
-  --chart-5: oklch(0.871 0.012 247.83);
-
-  /* Sidebar Profile Tokens */
-  --sidebar: oklch(0.957 0.006 247.83);       /* Slate-100 Side Navigation */
-  --sidebar-foreground: oklch(0.129 0.014 247.83);
-  --sidebar-primary: oklch(0.489 0.198 261.05);
-  --sidebar-primary-foreground: oklch(1 0 0);
-  --sidebar-accent: oklch(0.871 0.012 247.83);
-  --sidebar-accent-foreground: oklch(0.129 0.014 247.83);
-  --sidebar-border: oklch(0.871 0.012 247.83);
-  --sidebar-ring: oklch(0.489 0.198 261.05 / 0.5);
-}
-
-.dark, :root.dark {
-  /* --- Premium Developer Dark Mode Theme --- */
-  --background: #090d16;                      /* Modern Tech Solid Slate Dark Canvas */
-  --foreground: #f1f5f9;                      /* Clean Slate-100 Typography */
-  
-  --card: #0e1524;                            /* Solid Elevated Project Cards */
-  --card-foreground: #f1f5f9;
-  --popover: #0e1524;
-  --popover-foreground: #f1f5f9;
-  
-  --primary: #6366f1;                         /* Vibrant Indigo Accent Focal Points */
-  --primary-foreground: #090d16;
-  
-  --secondary: #1e293b;                       /* Dark Slate Border Structure */
-  --secondary-foreground: #f1f5f9;
-  
-  --muted: #1e293b;
-  --muted-foreground: #94a3b8;               /* Muted Gray Secondary Context Labels */
-  
-  --accent: #818cf8;                          /* Secondary Code Highlights */
-  --accent-foreground: #090d16;
-  --accent-hover: #a5b4fc;
-  --accent-glow: rgba(129, 140, 248, 0.15);
-  
-  --card-bg: rgba(14, 21, 36, 0.9);
-  --card-border: rgba(255, 255, 255, 0.06);
-  --nav-bg: rgba(9, 13, 22, 0.9);
-  
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: rgba(255, 255, 255, 0.06);
-  --input: rgba(255, 255, 255, 0.08);
-  --ring: #6366f1;
-
-  --scrollbar-thumb: #334155;
-  --scrollbar-track: #090d16;
+  --chart-1: #a65f3f;
+  --chart-2: #6f4e37;
+  --chart-3: #987d62;
+  --chart-4: #c5ad91;
+  --chart-5: #dfcfb9;
 
   /* Sidebar */
-  --sidebar: #0e1524;
-  --sidebar-foreground: #f1f5f9;
-  --sidebar-primary: #6366f1;
-  --sidebar-primary-foreground: #090d16;
-  --sidebar-accent: rgba(255, 255, 255, 0.03);
-  --sidebar-accent-foreground: #f1f5f9;
-  --sidebar-border: rgba(255, 255, 255, 0.06);
-  --sidebar-ring: #6366f1;
+  --sidebar: #eee4d5;
+  --sidebar-foreground: #38291f;
+  --sidebar-primary: #a65f3f;
+  --sidebar-primary-foreground: #fff8ed;
+  --sidebar-accent: #dfcfb9;
+  --sidebar-accent-foreground: #38291f;
+  --sidebar-border: #dfcfb9;
+  --sidebar-ring: #a65f3f;
 }
+
+
+
+.dark,
+:root.dark {
+  color-scheme: dark;
+
+  --background: #1c1713;
+  --foreground: #eee0cc;
+  --card: #292019;
+  --card-foreground: #eee0cc;
+  --popover: #292019;
+  --popover-foreground: #eee0cc;
+
+  --primary: #d2a078;
+  --primary-foreground: #1c1713;
+
+  --secondary: #382a20;
+  --secondary-foreground: #eee0cc;
+  --muted: #382a20;
+  --muted-foreground: #b9a38b;
+
+  --accent: #d18a61;
+  --accent-foreground: #1c1713;
+  --accent-hover: #e3a57d;
+  --accent-glow: rgba(209, 138, 97, 0.2);
+
+  --card-bg: rgba(41, 32, 25, 0.9);
+  --card-border: rgba(238, 224, 204, 0.12);
+  --nav-bg: rgba(28, 23, 19, 0.92);
+  --border: rgba(238, 224, 204, 0.12);
+  --input: rgba(238, 224, 204, 0.12);
+  --ring: #d18a61;
+
+  --scrollbar-thumb: #705541;
+  --scrollbar-track: #1c1713;
+
+  --chart-1: #d18a61;
+  --chart-2: #d2a078;
+  --chart-3: #a98260;
+  --chart-4: #705541;
+  --chart-5: #49372a;
+
+  --sidebar: #292019;
+  --sidebar-foreground: #eee0cc;
+  --sidebar-primary: #d18a61;
+  --sidebar-primary-foreground: #1c1713;
+  --sidebar-accent: rgba(238, 224, 204, 0.08);
+  --sidebar-accent-foreground: #eee0cc;
+  --sidebar-border: rgba(238, 224, 204, 0.12);
+  --sidebar-ring: #d18a61;
+}
+
 
 /* --- Tailwind v4 Engine Extension Map --- */
 @theme inline {
@@ -156,9 +163,9 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
 
-  --font-sans: var(--font-sans), system-ui, sans-serif;
-  --font-mono: var(--font-mono);
-  --font-heading: var(--font-mono);
+ --font-sans: var(--font-geist-sans), system-ui, sans-serif;
+--font-mono: var(--font-jetbrains-mono), monospace;
+--font-heading: var(--font-jetbrains-mono), monospace;
 
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);

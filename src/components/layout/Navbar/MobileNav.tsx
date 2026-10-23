@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Logo from "./Logo";
 import { Menu, X } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
@@ -10,8 +10,22 @@ import NavButton from "./NavButton";
 
 export default function MobileNav() {
   const [open, setOpen] = useState(false);
-
+  const navRef = useRef<HTMLDivElement>(null)
   const closeMenu = () => setOpen(false);
+  useEffect(() => {
+    if (!open) return;
+     const handleOutsideClick= (event:MouseEvent) => {
+      if (navRef.current && event.target instanceof Node && !navRef.current.contains(event.target))
+      {
+        closeMenu();
+      }
+      document.addEventListener("pointerdown", handleOutsideClick)
+      return () => {
+        document.removeEventListener("pointerdown", handleOutsideClick)
+      }
+      }
+     
+  }, [open])    
 
   return (
     <>

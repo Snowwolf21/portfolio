@@ -1,15 +1,19 @@
 
 import type { Metadata, Viewport } from "next";
 import { GeistSans } from "geist/font/sans";
-import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 import { JetBrains_Mono } from "next/font/google";
 import { cn } from "@/lib/utils";
 
 
+
+
 const geistSans = GeistSans
-const geistMono = GeistMono
-const jetbrainsMono = JetBrains_Mono({subsets:['latin'],variable:'--font-mono'});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-jetbrains-mono",
+});
 
 export const viewport: Viewport = {
   themeColor: [
@@ -156,7 +160,7 @@ export default function RootLayout({
       
       </head>
      <body 
-     className={`${geistSans.variable} ${geistMono.variable}  min-h-screen bg-background text-foreground transition-colors duration-300 flex flex-col gap-4`}>
+     className={`${geistSans.variable} min-h-screen bg-background text-foreground transition-colors duration-300 flex flex-col gap-4`}>
         {children}
       </body>
     </html>

@@ -31,11 +31,6 @@ export default function Footer() {
     <footer className="border-t border-zinc-200 dark:border-white/10 bg-zinc-50 dark:bg-[#070b13] py-8 text-muted-foreground transition-colors duration-300">
       <Container>
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-          {/* 
-            🚀 FIXED CASCADING RENDER & HYDRATION ERROR:
-            We removed the state hooks entirely to stop cascading renders. 
-            `suppressHydrationWarning` tells React it is safe to ignore the dynamic date difference.
-          */}
           <p 
             suppressHydrationWarning
             className="text-sm font-semibold tracking-wide text-center sm:text-left"
