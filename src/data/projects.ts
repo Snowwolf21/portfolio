@@ -18,7 +18,7 @@ export const projects: Project[] = [
     id: 1,
     title: "Stock Inventory Management",
     description:
-      "A web-based stock inventory management system designed to optimize stock control and streamline order processing. It's an highly interactive and responsive user interface built with React and Next.js App Router. It incorporates strongly typed, reusable UI components built with TypeScript to ensure code reliability, and integrates modern navigation systems with modular layouts.",
+      "A web-based stock inventory management system designed to optimize stock control and streamline order processing. It incorporates analytics for super-admin decision-making and efficient inventory management.",
     image: "/projects/stock-inventory.png", 
     github: "https://github.com/Snowwolf21/stock-management",
     live: "https://stock-management-main.vercel.app",

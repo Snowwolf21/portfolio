@@ -7,7 +7,7 @@ export default function AboutInfo() {
   return (
     <div className="space-y-8 text-left p-4  rounded-xl ">
       <div className="space-y-4">
-        <p className="text-base sm:text-lg leading-relaxed text-muted-foreground whitespace-pre-line">
+        <p className="text-sm sm:text-base leading-relaxed text-muted-foreground whitespace-pre-line">
           {about.description.trim()}
         </p>
       </div>

@@ -5,9 +5,9 @@ export const about = {
     "Passionate about crafting beautiful digital experiences.",
 
   description: `
-I'm a frontend engineer specializing in React, Next.js and TypeScript.
-
-I enjoy building responsive, accessible and scalable applications that solve real business problems.
+I'm a mechanical engineer, whose career revolve around: breaking down complex systems into efficient, reliable parts. 
+I am now taking that problem-solving mindset and applying it to Software Engineering.
+I enjoy building responsive, accessible and scalable applications that solve real business problems and reduce operational cost.
 
 My focus is creating user interfaces that are fast, maintainable and enjoyable to use.
 `,

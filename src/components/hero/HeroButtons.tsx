@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export default function HeroButtons() {
   return (
@@ -17,8 +18,12 @@ export default function HeroButtons() {
       {/* Contact Me Button */}
       <Link
         href="#contact"
-        className="inline-flex items-center gap-2 px-6 py-3.5 border border-accent-hover/20 hover:border-accent-glow/30 dark:border-foreground/15 bg-foreground/10 dark:bg-zinc-accent/20 hover:bg-foreground/20 
-        dark:hover:bg-zinc-accent/40 text-foreground font-bold rounded-xl transition-all duration-300 hover:scale-105 active:scale-95 active:bg-accent/50 active:text-white cursor-pointer text-sm"
+        className={cn(
+          "inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-sm font-bold cursor-pointer",
+          "border border-accent-hover/20 hover:border-accent-glow/30 dark:border-foreground/15",
+          "bg-foreground/10 hover:bg-foreground/20 dark:bg-zinc-accent/20 dark:hover:bg-zinc-accent/40",
+          "text-foreground transition-all duration-300 hover:scale-105 active:scale-95 active:bg-accent/50 active:text-white"
+        )}
       >
         <span>Contact Me</span>
       </Link>

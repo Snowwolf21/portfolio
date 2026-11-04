@@ -10,7 +10,7 @@ export default function AboutProfile() {
         <Image
           src={Kunmiss}
           alt="Akinkunmi Adeyinka"
-          loading="lazy"
+          loading="eager"
           fill
           sizes="(max-width: 1024px) 100vw, 600px"
           className="object-cover transition-transform duration-500 hover:scale-105"

@@ -6,7 +6,7 @@ import { Project } from "@/data/projects";
 import Card from "../ui/Card";
 import ProjectImage from "./ProjectImage";
 import ProjectOverlay from "./ProjectOverlay";
-import React from "react";
+
 
 
 
@@ -42,10 +42,10 @@ const handleClick = () => {
         relative
         overflow-hidden
         rounded-lg
-        border
-        border-gray-300
-        bg-card
-        h-145
+        border-2
+        border-gray-00
+        bg-card/20
+        h-130
         transition-all
         duration-500
         hover:-translate-y-1
@@ -64,11 +64,11 @@ const handleClick = () => {
       />
 
       <div className="p-6 flex flex-col gap-2 md:gap-4">
-        <h3 className="text-md md:text-lg font-bold">
+        <h3 className="text-sm md:text-md font-semibold text-foreground/80 tracking-wide">
           {project.title}
         </h3>
 
-        <p className="text-xs md:text-sm text-muted-foreground ">
+        <p className="text-sm lg:text-md text-muted-foreground md:line-clamp-4">
           {project.description}
         </p>
 

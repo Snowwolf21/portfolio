@@ -1,6 +1,7 @@
 import React from "react";
 import { contact } from "@/data/contact";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, MapPin } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 import GlassCard from "../ui/GlassCard";
 import Link from "next/link";
 
@@ -12,11 +13,11 @@ export default function ContactInfo() {
       value: contact.email,
       href: `mailto:${contact.email}`,
     },
-    {
-      icon: <Phone className="w-6 h-6 text-indigo-400" />,
-      label: "Phone",
+      {
+      icon: <FaWhatsapp className="w-6 h-6 text-green-500" />,
+      label: "WhatsApp",
       value: contact.phone,
-      href: `tel:${contact.phone.replace(/\s+/g, "")}`,
+      href: `https://wa.me/${contact.phone.replace(/\D/g, "").replace(/^0/, "234")}`,
     },
     {
       icon: <MapPin className="w-6 h-6 text-indigo-400" />,

@@ -199,7 +199,7 @@ export default function ContactForm() {
 
   if (status === "success") {
     return (
-      <div className="flex min-h-[350px] flex-col items-center justify-center space-y-4 rounded-3xl border border-emerald-500/20 bg-emerald-500/5 p-8 text-center">
+      <div className="flex min-h-87.5 flex-col items-center justify-center space-y-4 rounded-3xl border border-emerald-500/20 bg-emerald-500/5 p-8 text-center">
         <CheckCircle2 className="h-16 w-16 animate-bounce text-emerald-500" />
 
         <h3 className="text-2xl font-bold">
@@ -392,7 +392,7 @@ export default function ContactForm() {
       <Button
         type="submit"
         disabled={isSending}
-        className="flex w-full items-center justify-center gap-2 rounded-xl bg-linear-to-r from-accent/40 to-accent px-8 py-6 font-bold
+        className="flex w-full items-center justify-center gap-2 rounded-xl bg-linear-to-r from-accent/80 to-accent px-8 py-6 font-bold
          text-white text-base shadow-md transition-all 
         duration-300 hover:scale-[1.02] hover:from-accent-hover/80 hover:to-accent-hover/80 disabled:pointer-events-none disabled:opacity-50 sm:w-auto"
       >

@@ -31,7 +31,7 @@ export default function HeroContent() {
 
       {/* Description */}
       <p className="max-w-xl text-base text-muted-foreground leading-relaxed">
-       I build web applications that solve business problems, simplify operations, and reduce operational costs. Using React, Next.js, and Node.js, I turn ideas into fast, reliable software designed to scale without unnecessary complexity.
+       I build web applications that solve business problems, simplify operations, and reduce operational costs. I turn ideas into fast, reliable software designed, scalable without unnecessary complexity.
       </p>
 
       {/* Action Buttons */}

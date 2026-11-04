@@ -4,7 +4,7 @@ import Kunmi from "../../assets/images/Kunmi.jpeg";
 
 export default function HeroImage() {
   return (
-    <div className="relative flex justify-center items-center ">
+    <div className="relative flex items-center justify-center">
       {/* Main Avatar Container */}
       <div className="relative h-100 w-80 md:h-100 md:w-110 group">
         {/* Neon Glow behind the card */}
@@ -29,8 +29,8 @@ export default function HeroImage() {
         {/* Floating Card 1: 2+ Years Experience (Bottom-Left) */}
         <div className="hidden md:block absolute left-2 sm:-left-4 md:-left-10 bottom-10 z-20">
           <div className="bg-zinc-950/85 dark:bg-zinc-950/70 backdrop-blur-md rounded-2xl border border-white/10 p-4 shadow-xl flex flex-col gap-2 justify-center items-start text-left w-30">
-            <span className="text-3xl font-black text-transparent bg-clip-text bg-linear-to-r from-accent to-indigo-400">
-              2+
+            <span className="text-3xl font-black text-transparent bg-clip-text bg-linear-to-r from-secondary to-primary">
+              3+
             </span>
             <span className="text-xs uppercase font-bold tracking-wider text-zinc-400 leading-tight mt-1">
               Years<br />Experience

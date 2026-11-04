@@ -8,7 +8,7 @@ export default function Contact() {
   return (
     <section id="contact" className="py-20 relative overflow-hidden">
       {/* Background glowing gradient */}
-      <div className="absolute right-0 bottom-0 w-[400px] h-[400px] rounded-full bg-accent-glow/10 blur-[130px] pointer-events-none" />
+      <div className="absolute right-0 bottom-0 w-100 h-100 rounded-full bg-accent-glow/10 blur-[130px] pointer-events-none" />
 
       <Container>
         <SectionHeading
