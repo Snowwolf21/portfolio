@@ -43,8 +43,8 @@ const handleClick = () => {
         overflow-hidden
         rounded-lg
         border-2
-        border-gray-00
-        bg-card/20
+        border-accent/60
+        bg-card
         h-130
         transition-all
         duration-500
@@ -68,7 +68,7 @@ const handleClick = () => {
           {project.title}
         </h3>
 
-        <p className="text-sm lg:text-md text-muted-foreground md:line-clamp-4">
+        <p className="text-xs md:text-sm lg:text-md text-muted-foreground leading-relaxed md:line-clamp-4">
           {project.description}
         </p>
 
