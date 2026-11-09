@@ -1,14 +1,25 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { useInView } from "framer-motion";
 import BackendGrid from "./BackendGrid";
 import FrontendGrid from "./FrontendGrid";
 import GlassCard from "@/components/ui/GlassCard";
 // import { SiReact, SiNodedotjs } from "react-icons/si";
 import { Button } from "@/components/ui";
 
+// Keep in sync with the `duration-700` class on the rotating card below
+// (duration-500 = 0.5, duration-1000 = 1, and so on).
+const FLIP_DURATION = 0.7;
+
 export default function TransformativeStackCard() {
   const [isFlipped, setIsFlipped] = useState(false);
+
+  // One scroll detector for the whole card. It is true while the card is on
+  // screen, so the visible side replays each time you scroll back to it.
+  const cardRef = useRef<HTMLDivElement>(null);
+  const inView = useInView(cardRef, { amount: 0.3 });
+  
 
   return (
     <div className="flex flex-col items-center gap-8 w-full max-w-2xl mx-auto">
@@ -40,7 +51,7 @@ export default function TransformativeStackCard() {
       </div>
 
       {/* 3D Card Container */}
-      <div className="relative w-full h-130 perspective-[1500px]">
+      <div ref={cardRef} className="relative w-full h-130 perspective-[1500px]">
         {/* The rotating card */}
         <div
           className={`relative w-full h-full duration-700 transition-all ease-out transform-style-3d transform-3d ${isFlipped ? "transform-[rotateY(180deg)]" : ""}`}
@@ -50,7 +61,7 @@ export default function TransformativeStackCard() {
             <GlassCard className="w-full h-full p-0 overflow-hidden border border-white/10 shadow-2xl relative">
               {/* Radial gradient background accent */}
               <div className="absolute -right-20 -top-20 w-60 h-60 rounded-full bg-sky-500/10 blur-[80px] pointer-events-none" />
-              <FrontendGrid />
+              <FrontendGrid isActive={inView && !isFlipped} flipDuration={FLIP_DURATION} />
             </GlassCard>
           </div>
 
@@ -59,7 +70,7 @@ export default function TransformativeStackCard() {
             <GlassCard className="w-full h-full p-0 overflow-hidden border border-white/10 shadow-2xl relative">
               {/* Radial gradient background accent */}
               <div className="absolute -left-20 -bottom-20 w-60 h-60 rounded-full bg-emerald-500/10 blur-[80px] pointer-events-none" />
-              <BackendGrid />
+              <BackendGrid isActive={inView && isFlipped} flipDuration={FLIP_DURATION} />
             </GlassCard>
           </div>
         </div>

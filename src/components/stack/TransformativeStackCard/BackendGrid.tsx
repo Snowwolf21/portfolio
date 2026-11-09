@@ -1,44 +1,65 @@
-import React from "react";
+"use client";
+
+import React, { useMemo } from "react";
+import { MotionConfig, motion } from "framer-motion";
 import { stack } from "@/data/stack";
 import { getSkillIcon } from "./IconMapper";
+import { createSkillVariants } from "./skill-motion";
 
-export default function BackendGrid() {
+interface Props {
+  /** true = this side is showing AND the card is on screen. */
+  isActive?: boolean;
+  /** Match your card's flip duration in seconds (duration-700 = 0.7). */
+  flipDuration?: number;
+}
+
+export default function BackendGrid({ isActive = true, flipDuration = 0.7 }: Props) {
   const backendSkills = stack.find((item) => item.title === "Backend")?.items || [];
+  const { grid, skill: skillVariants } = useMemo(
+    () => createSkillVariants(flipDuration),
+    [flipDuration]
+  );
 
   return (
-    <div className="h-full flex flex-col justify-between p-6">
-      <div>
-        <div className="flex items-center justify-between mb-6">
-          <h3 className="text-md font-medium tracking-wider text-foreground">
-            Backend Stack
-          </h3>
-          <span className="text-xs font-bold px-3 py-1 rounded-full border border-emerald-400/30 text-emerald-400 bg-emerald-400/10 uppercase tracking-widest">
-            Server
-          </span>
-        </div>
+    <MotionConfig reducedMotion="user">
+      <div className="h-full flex flex-col justify-between p-6">
+        <div>
+          <div className="flex items-center justify-between mb-6">
+            <h3 className="text-md font-medium tracking-wider text-foreground">
+              Backend Stack
+            </h3>
+            <span className="text-xs font-bold px-3 py-1 rounded-full border border-emerald-400/30 text-emerald-400 bg-emerald-400/10 uppercase tracking-widest">
+              Server
+            </span>
+          </div>
 
-        <div className="grid grid-cols-2 gap-4">
-          {backendSkills.map((skill) => (
-            <div 
-              key={skill.name}
-              className="p-3 rounded-2xl border border-accent/30 bg-white/5 dark:bg-zinc-900/50 hover:border-accent-hover/20 hover:bg-white/10 dark:hover:bg-accent-hover/20 transition-all duration-300 group flex flex-col  h-20  shadow-sm hover:shadow-lg"
-            >
-              <div className="flex flex-col justify-center items-center ">
-                <div className="flex flex-col items-center ">
-                  <div className="transition-transform duration-300 group-hover:rotate-12 group-hover:scale-110">
-                    {getSkillIcon(skill.iconName, "w-5 h-5 sm:w-6 sm:h-6", skill.color)}
+          <motion.div
+            className="grid grid-cols-2 md:grid-cols-3 gap-4"
+            variants={grid}
+            initial="hidden"
+            animate={isActive ? "visible" : "hidden"}
+          >
+            {backendSkills.map((skill) => (
+              <motion.div
+                key={skill.name}
+                variants={skillVariants}
+                className="p-3 rounded-lg border border-accent/30 bg-white/5 dark:bg-zinc-900/50 hover:border-accent-hover/20 hover:bg-white/10 dark:hover:bg-accent-hover/20 transition-[border-color,background-color,box-shadow] duration-300 group flex flex-col  h-auto  shadow-sm hover:shadow-lg"
+              >
+                <div className="flex flex-col justify-center items-center ">
+                  <div className="flex flex-col items-center ">
+                    <div className="transition-transform duration-300 group-hover:rotate-12 group-hover:scale-110">
+                      {getSkillIcon(skill.iconName, "w-4 h-4 sm:w-5 sm:h-5", skill.color)}
+                    </div>
+                    <span className="text-xs md:text-sm font-semibold text-foreground/90 group-hover:text-foreground transition-colors truncate max-w-22.5 sm:max-w-none">
+                      {skill.name}
+                    </span>
                   </div>
-                  <span className="text-xs md:text-sm font-semibold text-foreground/90 group-hover:text-foreground transition-colors truncate max-w-[90px] sm:max-w-none">
-                    {skill.name}
-                  </span>
                 </div>
-                
-              </div>
-
-            </div>
-          ))}
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </div>
-    </div>
+    </MotionConfig>
   );
 }
