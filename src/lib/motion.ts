@@ -1,7 +1,7 @@
 import type { Variants } from "framer-motion";
 
 // One easing + one set of distances for the whole site keeps motion consistent.
-const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
+export const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
 // Play once, when ~25% of the element is visible.
 export const VIEWPORT = { once: true, amount: 0.25 } as const;

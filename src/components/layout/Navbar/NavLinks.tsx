@@ -52,7 +52,7 @@ export default function NavLinks({ className, onLinkClick }: NavLinksProps) {
                 setActiveSection(item.href)
                 onLinkClick?.()
               }}
-              className={`relative pb-1 text-base font-semibold tracking-wide transition-colors duration-200 group
+              className={`relative pb-1 text-sm md:text-md font-medium tracking-wide transition-colors duration-200 group
                 ${isActive ? "text-foreground/70" : "text-foreground/70 hover:text-foreground"}
               `}
             >
@@ -60,7 +60,7 @@ export default function NavLinks({ className, onLinkClick }: NavLinksProps) {
 
               {/* Animated underline — visible on hover OR when active */}
               <span
-                className={`absolute bottom-0 left-0 h-1 rounded-full bg-accent transition-all duration-300 ease-out
+                className={`absolute bottom-0 left-0 h-0.5 rounded-full bg-accent transition-all duration-300 ease-out
                   ${isActive ? "w-full opacity-100" : "w-0 opacity-0 group-hover:w-full group-hover:opacity-100"}
                 `}
               />

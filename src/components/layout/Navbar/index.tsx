@@ -8,7 +8,7 @@ export default function Navbar() {
 
       <Container>
 
-        <nav className="mt-6 rounded-lg shadow-sm border border-white/10 bg-background/80 px-8 py-5 backdrop-blur-lg">
+        <nav className="mt-6 rounded-lg shadow-sm border border-white/10 bg-background/60 px-6 py-4 backdrop-blur-md">
 
           <DesktopNav />
 

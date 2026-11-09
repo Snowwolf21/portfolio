@@ -41,7 +41,8 @@ export default function MobileNav() {
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
           >
-            {open ? <X /> : <Menu />}
+            {open ? <X 
+            className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
       </div>
