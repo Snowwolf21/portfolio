@@ -12,26 +12,24 @@ export default function HeroContent() {
 
       <div className="space-y-4 ">
         {/* Main Header */}
-        <h1 className="text-3xl font-black leading-none md:text-5xl tracking-tight text-foreground/80 ">
+        <h1 className="text-3xl font-semibold leading-none md:text-5xl tracking-tight text-foreground/80 ">
           I&apos;m{" "}
-          <span className="text-foreground/80">
-            Akinkunmi
+           {/* <br className="hidden sm:inline" /> */}
+          <span className="text-4xl md:text-5xl text-accent/80">
+            Akinkunmi,
           </span>
-          <br className="hidden sm:inline" />
-          <span className="mt-4  bg-clip-text text-accent/70 sm:mt-1 inline-block">
-            Adeyinka,
-          </span>
+         
         </h1>
 
         {/* Sub Header */}
-        <h2 className="text-2xl font-bold md:text-3xl text-foreground/80 tracking-wide">
+        <h2 className="text-xl font-semibold md:text-2xl text-foreground/80 tracking-wide">
           Frontend Developer
         </h2>
       </div>
 
       {/* Description */}
-      <p className="max-w-xl text-base text-muted-foreground leading-relaxed">
-       I build web applications that solve business problems, simplify operations, and reduce operational costs. I turn ideas into fast, reliable software designed, scalable without unnecessary complexity.
+      <p className="max-w-xl text-sm md:text-base text-muted-foreground leading-relaxed">
+       I build web applications that solve business problems, simplify operations, and reduce operational costs. 
       </p>
 
       {/* Action Buttons */}

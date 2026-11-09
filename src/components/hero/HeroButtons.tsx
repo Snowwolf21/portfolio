@@ -9,7 +9,7 @@ export default function HeroButtons() {
       {/* View My Work Button */}
       <Link
         href="#projects"
-        className="inline-flex items-center gap-2 px-6 py-3.5 bg-linear-to-r from-accent/80 to-accent/90 active:bg-accent/80 md:hover:from-accent-hover md:hover:to-accent-hover/90 text-white font-bold rounded-xl transition-all duration-300 shadow-md shadow-accent-glow hover:shadow-lg hover:shadow-accent-glow/50 hover:scale-105 active:scale-95 cursor-pointer text-sm"
+        className="inline-flex items-center justify-center gap-2 w-full md:w-40 p-4 md:p-0 bg-linear-to-r from-accent/80 to-accent/90 active:bg-accent/80 md:hover:from-accent-hover md:hover:to-accent-hover/90 text-white font-semibold rounded-md transition-all duration-300 shadow-md shadow-accent-glow hover:shadow-lg hover:shadow-accent-glow/50 hover:scale-105 active:scale-95 cursor-pointer text-sm md:text-md"
       >
         <span>View My Work</span>
         <ArrowUpRight className="w-4 h-4" />
@@ -19,7 +19,7 @@ export default function HeroButtons() {
       <Link
         href="#contact"
         className={cn(
-          "inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-sm font-bold cursor-pointer",
+          "inline-flex items-center justify-center gap-2 w-full md:w-40 p-4 rounded-md text-sm md:text-md font-semibold cursor-pointer",
           "border border-accent-hover/20 hover:border-accent-glow/30 dark:border-foreground/15",
           "bg-foreground/10 hover:bg-foreground/20 dark:bg-zinc-accent/20 dark:hover:bg-zinc-accent/40",
           "text-foreground transition-all duration-300 hover:scale-105 active:scale-95 active:bg-accent/50 active:text-white"
